@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isMobile = window.innerWidth <= 768;
 
     // ========================================
-    // Smooth scroll Lenis synchronisé avec GSAP ScrollTrigger
+    // Smooth scroll Lenis synchronise avec GSAP ScrollTrigger
     ========================================
     if (!prefersReducedMotion) {
         const lenis = new Lenis({

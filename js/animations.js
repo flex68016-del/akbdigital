@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loader = document.querySelector('.loader');
 
     if (loader && !prefersReducedMotion) {
-        // Vérifier si le loader a déjà été joué cette session
+        // Verifier si le loader a deja ete joue cette session
         const hasLoaderPlayed = sessionStorage.getItem('loaderPlayed');
 
         if (!hasLoaderPlayed) {
@@ -62,11 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .set(loader, { display: 'none' });
         } else {
-            // Si déjà joué, masquer immédiatement
+            // Si deja joue, masquer immediatement
             gsap.set(loader, { display: 'none' });
         }
     } else if (loader) {
-        // Si prefers-reduced-motion, masquer immédiatement
+        // Si prefers-reduced-motion, masquer immediatement
         gsap.set(loader, { display: 'none' });
     }
 
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageTransition = document.querySelector('.page-transition');
 
     if (pageTransition && !prefersReducedMotion) {
-        // Si la transition est visible (arrivée sur la page), la faire descendre
+        // Si la transition est visible (arrivee sur la page), la faire descendre
         if (pageTransition.style.transform === 'translateY(0%)' || pageTransition.classList.contains('page-transition--active')) {
             gsap.to(pageTransition, {
                 y: '-100%',
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Animation du sous-titre qui alterne
     if (heroSubtitle && !prefersReducedMotion) {
-        const subtitles = ['Vidéaste', 'Photographe', 'Monteur vidéo', 'Community Manager'];
+        const subtitles = ['Videaste', 'Photographe', 'Monteur video', 'Community Manager'];
         let currentIndex = 0;
 
         function rotateSubtitle() {
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 onComplete: () => {
                     currentIndex = (currentIndex + 1) % subtitles.length;
                     heroSubtitle.textContent = subtitles[currentIndex];
-                    // Entrée
+                    // Entree
                     gsap.to(heroSubtitle, {
                         opacity: 1,
                         y: 0,
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(rotateSubtitle, 3000);
     }
 
-    // Timecode qui avance en temps réel
+    // Timecode qui avance en temps reel
     if (heroTimecode) {
         function updateTimecode() {
             const now = new Date();
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateTimecode, 1000);
     }
 
-    // Parallaxe de la vidéo selon la souris et le scroll
+    // Parallaxe de la video selon la souris et le scroll
     if (heroVideo && !prefersReducedMotion) {
         let mouseX = 0;
         let mouseY = 0;
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animation des projets à la une
+    // Animation des projets a la une
     const projectCards = document.querySelectorAll('.project-card');
     if (projectCards.length > 0 && !prefersReducedMotion) {
         gsap.from(projectCards, {
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Révélation mot par mot du texte de présentation au scroll
+    // Revelation mot par mot du texte de presentation au scroll
     const aboutText = document.getElementById('about-text');
     if (aboutText && !prefersReducedMotion) {
         const words = aboutText.textContent.split(' ');
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Parallaxe légère du portrait
+    // Parallaxe legere du portrait
     const portrait = document.querySelector('.about-presentation__portrait');
     if (portrait && !prefersReducedMotion) {
         gsap.to(portrait, {
@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animation des items de compétences en cascade
+    // Animation des items de competences en cascade
     const skillLists = document.querySelectorAll('.skill-card__list');
     if (skillLists.length > 0 && !prefersReducedMotion) {
         skillLists.forEach(list => {
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Animation d'entrée de chaque carte
+            // Animation d'entree de chaque carte
             const content = card.querySelector('.experience-card__content');
             const number = card.querySelector('.experience-card__number');
 
@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animation des icônes SVG
+    // Animation des icones SVG
     const visionIcons = document.querySelectorAll('.agency-vision__icon');
     if (visionIcons.length > 0 && !prefersReducedMotion) {
         visionIcons.forEach(icon => {
@@ -578,7 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animation de fusion des cercles complémentarité
+    // Animation de fusion des cercles complementarite
     const complementarityDiagram = document.querySelector('.agency-complementarity__diagram');
     const complementarityResult = document.querySelector('.agency-complementarity__result');
 
@@ -600,7 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: 'power3.out'
                 });
 
-                // Afficher le résultat après la fusion
+                // Afficher le resultat apres la fusion
                 setTimeout(() => {
                     complementarityResult.classList.add('visible');
                 }, 500);
@@ -685,7 +685,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Animation d'entrée de chaque carte
+            // Animation d'entree de chaque carte
             const content = card.querySelector('.experience-card__content');
             const number = card.querySelector('.experience-card__number');
 
@@ -793,7 +793,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animation des icônes SVG
+    // Animation des icones SVG
     const visionIcons = document.querySelectorAll('.agency-vision__icon');
     if (visionIcons.length > 0 && !prefersReducedMotion) {
         visionIcons.forEach(icon => {
@@ -810,7 +810,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animation de fusion des cercles complémentarité
+    // Animation de fusion des cercles complementarite
     const complementarityDiagram = document.querySelector('.agency-complementarity__diagram');
     const complementarityResult = document.querySelector('.agency-complementarity__result');
 
@@ -832,7 +832,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: 'power3.out'
                 });
 
-                // Afficher le résultat après la fusion
+                // Afficher le resultat apres la fusion
                 setTimeout(() => {
                     complementarityResult.classList.add('visible');
                 }, 500);
@@ -923,13 +923,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Ajouter l'animation d'ouverture depuis la miniature pour la lightbox
 if (typeof gsap !== 'undefined' && typeof Flip !== 'undefined') {
-    // Cette fonction sera appelée depuis main.js quand on ouvre la lightbox
+    // Cette fonction sera appelee depuis main.js quand on ouvre la lightbox
     window.animateLightboxOpen = function(clickedElement) {
         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             const lightbox = document.getElementById('lightbox');
             const lightboxContent = lightbox.querySelector('.lightbox__content');
 
-            // Animation depuis la position de l'élément cliqué
+            // Animation depuis la position de l'element clique
             const rect = clickedElement.getBoundingClientRect();
             const lightboxRect = lightbox.getBoundingClientRect();
 
