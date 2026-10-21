@@ -76,81 +76,196 @@
     </div>
 
     <!-- Hero Agence -->
-    <section class="agency-hero">
+    <section class="agency-hero agency-hero--gradient">
         <div class="container">
             <h1 class="agency-hero__title" data-text-reveal>AKB COMMUNICATION</h1>
-            <p class="agency-hero__subtitle">Agence de Communication Digitale</p>
+            <p class="agency-hero__subtitle">Votre image, notre vision.</p>
         </div>
     </section>
 
-    <!-- Distinction -->
-    <section class="agency-distinction">
+    <!-- Présentation -->
+    <section class="agency-presentation">
         <div class="container">
-            <div class="agency-distinction__card">
-                <h2 class="agency-distinction__title">Portfolio vs Agence</h2>
-                <p style="color: var(--text); margin-bottom: var(--space-8);">
-                    AKB Communication est mon agence, distincte de mon portfolio personnel. Voici comment je les distingue :
-                </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8);">
-                    <div>
-                        <h3 style="color: var(--sky); margin-bottom: var(--space-4);">Portfolio Personnel</h3>
-                        <p style="color: var(--muted);">
-                            Présente mon travail créatif individuel en tant qu'artiste vidéaste et photographe. Projets artistiques, collaborations personnelles, et démonstration de mon expertise technique.
-                        </p>
-                    </div>
-                    <div>
-                        <h3 style="color: var(--sky); margin-bottom: var(--space-4);">AKB Communication</h3>
-                        <p style="color: var(--muted);">
-                            Offre des services B2B complets aux entreprises. Stratégies digitales, gestion de communauté sur le long terme, campagnes marketing, et production de contenu à grande échelle.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <p class="agency-presentation__text">
+                AKB Communication est une agence de communication fondée par ALY Koffi Brice. Elle représente mon ambition de proposer des services de création audiovisuelle et de communication adaptés aux besoins des marques, entreprises, entrepreneurs et organisateurs d'événements.
+            </p>
         </div>
     </section>
 
-    <!-- Services Agence -->
-    <section class="agency-services">
+    <!-- Services en cartes 3D -->
+    <section class="agency-services-3d">
         <div class="container">
             <div class="section-title">
                 <span class="section-title__number">01</span>
-                <h2 class="section-title__text">Services de l'agence</h2>
+                <h2 class="section-title__text">Nos Services</h2>
             </div>
-            <div class="agency-services__grid">
-                <div class="agency-service-card">
-                    <h3 class="agency-service-card__title">Stratégie Digitale</h3>
-                    <p class="agency-service-card__description">
-                        Audit de votre présence en ligne, définition d'objectifs, et création de stratégies sur mesure pour atteindre vos KPIs.
+            <div class="agency-services-3d__grid">
+                <div class="agency-service-3d-card" data-tilt>
+                    <div class="agency-service-3d-card__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                            <circle cx="12" cy="13" r="4"/>
+                        </svg>
+                    </div>
+                    <h3 class="agency-service-3d-card__title">Photographie professionnelle</h3>
+                    <p class="agency-service-3d-card__description">
+                        Portraits, produits, événements et contenus commerciaux. Des images qui racontent votre histoire.
                     </p>
                 </div>
-                <div class="agency-service-card">
-                    <h3 class="agency-service-card__title">Gestion de Communauté</h3>
-                    <p class="agency-service-card__description">
-                        Animation de vos communautés sur les réseaux sociaux avec une approche professionnelle et engageante.
+
+                <div class="agency-service-3d-card" data-tilt>
+                    <div class="agency-service-3d-card__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="23 7 16 12 23 17 23 7"/>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="agency-service-3d-card__title">Production et couverture vidéo</h3>
+                    <p class="agency-service-3d-card__description">
+                        Captation événementielle, vidéos promotionnelles, reportages et contenus pour réseaux sociaux.
                     </p>
                 </div>
-                <div class="agency-service-card">
-                    <h3 class="agency-service-card__title">Production de Contenu</h3>
-                    <p class="agency-service-card__description">
-                        Création de contenu visuel professionnel pour nourrir vos canaux de communication.
+
+                <div class="agency-service-3d-card" data-tilt>
+                    <div class="agency-service-3d-card__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                    </div>
+                    <h3 class="agency-service-3d-card__title">Montage vidéo</h3>
+                    <p class="agency-service-3d-card__description">
+                        Assemblage, transitions, effets, titres et synchronisation. Des vidéos de qualité professionnelle.
                     </p>
                 </div>
-                <div class="agency-service-card">
-                    <h3 class="agency-service-card__title">Publicité Digitale</h3>
-                    <p class="agency-service-card__description">
-                        Campagnes publicitaires sur les réseaux sociaux pour maximiser votre reach et conversions.
+
+                <div class="agency-service-3d-card" data-tilt>
+                    <div class="agency-service-3d-card__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3 class="agency-service-3d-card__title">Création de contenus numériques</h3>
+                    <p class="agency-service-3d-card__description">
+                        Contenus adaptés à chaque plateforme : Instagram, TikTok, Facebook, LinkedIn et YouTube.
                     </p>
+                </div>
+
+                <div class="agency-service-3d-card" data-tilt>
+                    <div class="agency-service-3d-card__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="agency-service-3d-card__title">Accompagnement en communication digitale et CM</h3>
+                    <p class="agency-service-3d-card__description">
+                        Stratégie complète : gestion de communauté, animation, et mise en valeur de votre marque en ligne.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Approche -->
+    <section class="agency-vision">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title__number">02</span>
+                <h2 class="section-title__text">Vision & Approche</h2>
+            </div>
+            <div class="agency-vision__values">
+                <div class="agency-vision__value">
+                    <div class="agency-vision__icon agency-vision__icon--creative">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="agency-vision__value-title">Créativité</h3>
+                    <p class="agency-vision__value-desc">
+                        Des contenus originaux qui se démarquent et captivent votre audience.
+                    </p>
+                </div>
+
+                <div class="agency-vision__value">
+                    <div class="agency-vision__icon agency-vision__icon--pro">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="agency-vision__value-title">Professionnalisme</h3>
+                    <p class="agency-vision__value-desc">
+                        Un travail soigné, respectueux des délais et des standards de qualité.
+                    </p>
+                </div>
+
+                <div class="agency-vision__value">
+                    <div class="agency-vision__icon agency-vision__icon--image">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3 class="agency-vision__value-title">Image soignée</h3>
+                    <p class="agency-vision__value-desc">
+                        Une cohérence visuelle qui renforce votre identité de marque.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pour qui ? -->
+    <section class="agency-target agency-target--gradient">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title__number">03</span>
+                <h2 class="section-title__text">Pour qui ?</h2>
+            </div>
+            <div class="agency-target__list">
+                <div class="agency-target__item">Entreprises</div>
+                <div class="agency-target__item">Marques</div>
+                <div class="agency-target__item">Entrepreneurs</div>
+                <div class="agency-target__item">Organisateurs d'événements</div>
+                <div class="agency-target__item">Particuliers</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complémentarité -->
+    <section class="agency-complementarity">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title__number">04</span>
+                <h2 class="section-title__text">Complémentarité</h2>
+            </div>
+            <div class="agency-complementarity__diagram">
+                <div class="agency-complementarity__circle agency-complementarity__circle--portfolio">
+                    <span class="agency-complementarity__circle-label">Portfolio de Brice</span>
+                </div>
+                <div class="agency-complementarity__circle agency-complementarity__circle--agency">
+                    <span class="agency-complementarity__circle-label">AKB Communication</span>
+                </div>
+                <div class="agency-complementarity__plus">+</div>
+                <div class="agency-complementarity__result">
+                    <span class="agency-complementarity__result-text">Un service complet</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA -->
-    <section class="cta-section">
+    <section class="cta-section cta-section--gradient">
         <div class="container">
             <div class="cta-section__content">
-                <h2 class="cta-section__title">Votre marque mérite plus</h2>
-                <a href="contact.html?sujet=agence" class="btn btn--primary">Demander un devis agence</a>
+                <h2 class="cta-section__title">Demander un devis</h2>
+                <a href="contact.html?sujet=devis" class="btn btn--primary btn--dark">Contactez-nous</a>
             </div>
         </div>
     </section>

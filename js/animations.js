@@ -425,16 +425,72 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const experienceItems = document.querySelectorAll('.experience-item');
-    if (experienceItems.length > 0 && !prefersReducedMotion) {
-        gsap.from(experienceItems, {
+    // Sticky cards et compteur pour experiences (desktop uniquement)
+    const experienceCards = document.querySelectorAll('.experience-card');
+    const counterCurrent = document.querySelector('.experiences-counter__current');
+
+    if (experienceCards.length > 0 && !prefersReducedMotion && window.innerWidth > 768) {
+        // Pin de chaque carte
+        experienceCards.forEach((card, index) => {
+            gsap.to(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top top',
+                    end: '+=100%',
+                    pin: true,
+                    pinSpacing: true,
+                    scrub: true,
+                    onEnter: () => {
+                        if (counterCurrent) {
+                            counterCurrent.textContent = String(index + 1).padStart(2, '0');
+                        }
+                    },
+                    onEnterBack: () => {
+                        if (counterCurrent) {
+                            counterCurrent.textContent = String(index + 1).padStart(2, '0');
+                        }
+                    }
+                }
+            });
+
+            // Animation d'entrée de chaque carte
+            const content = card.querySelector('.experience-card__content');
+            const number = card.querySelector('.experience-card__number');
+
+            gsap.from(content, {
+                opacity: 0,
+                y: 100,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 60%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+            gsap.from(number, {
+                opacity: 0,
+                scale: 0.5,
+                duration: 0.6,
+                ease: 'back.out(1.7)',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 70%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+    } else if (experienceCards.length > 0 && !prefersReducedMotion) {
+        // Mobile : animation simple en cascade
+        gsap.from(experienceCards, {
             opacity: 0,
             y: 50,
             stagger: 0.2,
             duration: 0.6,
             ease: 'power3.out',
             scrollTrigger: {
-                trigger: '.experiences-list',
+                trigger: '.experiences-sticky',
                 start: 'top 80%'
             }
         });
@@ -457,17 +513,112 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const agencyServiceCards = document.querySelectorAll('.agency-service-card');
-    if (agencyServiceCards.length > 0 && !prefersReducedMotion) {
-        gsap.from(agencyServiceCards, {
+    // Tilt effect sur les cartes 3D (desktop uniquement, pas tactile)
+    const tiltCards = document.querySelectorAll('[data-tilt]');
+    if (tiltCards.length > 0 && !prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+
+                gsap.to(card, {
+                    rotateX: rotateX,
+                    rotateY: rotateY,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    rotateX: 0,
+                    rotateY: 0,
+                    duration: 0.5,
+                    ease: 'power2.out'
+                });
+            });
+        });
+    }
+
+    // Animation des valeurs vision
+    const visionValues = document.querySelectorAll('.agency-vision__value');
+    if (visionValues.length > 0 && !prefersReducedMotion) {
+        gsap.from(visionValues, {
             opacity: 0,
             y: 50,
-            stagger: 0.15,
+            stagger: 0.2,
             duration: 0.6,
             ease: 'power3.out',
             scrollTrigger: {
-                trigger: '.agency-services',
+                trigger: '.agency-vision',
                 start: 'top 80%'
+            }
+        });
+    }
+
+    // Animation des icônes SVG
+    const visionIcons = document.querySelectorAll('.agency-vision__icon');
+    if (visionIcons.length > 0 && !prefersReducedMotion) {
+        visionIcons.forEach(icon => {
+            gsap.from(icon, {
+                scale: 0,
+                rotation: -180,
+                duration: 0.8,
+                ease: 'back.out(1.7)',
+                scrollTrigger: {
+                    trigger: icon,
+                    start: 'top 85%'
+                }
+            });
+        });
+    }
+
+    // Animation de fusion des cercles complémentarité
+    const complementarityDiagram = document.querySelector('.agency-complementarity__diagram');
+    const complementarityResult = document.querySelector('.agency-complementarity__result');
+
+    if (complementarityDiagram && complementarityResult && !prefersReducedMotion) {
+        ScrollTrigger.create({
+            trigger: '.agency-complementarity',
+            start: 'top 60%',
+            onEnter: () => {
+                // Faire se rapprocher les cercles
+                gsap.to('.agency-complementarity__circle--portfolio', {
+                    x: 50,
+                    duration: 1,
+                    ease: 'power3.out'
+                });
+
+                gsap.to('.agency-complementarity__circle--agency', {
+                    x: -50,
+                    duration: 1,
+                    ease: 'power3.out'
+                });
+
+                // Afficher le résultat après la fusion
+                setTimeout(() => {
+                    complementarityResult.classList.add('visible');
+                }, 500);
+            },
+            onLeaveBack: () => {
+                gsap.to('.agency-complementarity__circle--portfolio', {
+                    x: 0,
+                    duration: 0.5,
+                    ease: 'power3.out'
+                });
+
+                gsap.to('.agency-complementarity__circle--agency', {
+                    x: 0,
+                    duration: 0.5,
+                    ease: 'power3.out'
+                });
+
+                complementarityResult.classList.remove('visible');
             }
         });
     }
@@ -506,16 +657,72 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const experienceItems = document.querySelectorAll('.experience-item');
-    if (experienceItems.length > 0 && !prefersReducedMotion) {
-        gsap.from(experienceItems, {
+    // Sticky cards et compteur pour experiences (desktop uniquement)
+    const experienceCards = document.querySelectorAll('.experience-card');
+    const counterCurrent = document.querySelector('.experiences-counter__current');
+
+    if (experienceCards.length > 0 && !prefersReducedMotion && window.innerWidth > 768) {
+        // Pin de chaque carte
+        experienceCards.forEach((card, index) => {
+            gsap.to(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top top',
+                    end: '+=100%',
+                    pin: true,
+                    pinSpacing: true,
+                    scrub: true,
+                    onEnter: () => {
+                        if (counterCurrent) {
+                            counterCurrent.textContent = String(index + 1).padStart(2, '0');
+                        }
+                    },
+                    onEnterBack: () => {
+                        if (counterCurrent) {
+                            counterCurrent.textContent = String(index + 1).padStart(2, '0');
+                        }
+                    }
+                }
+            });
+
+            // Animation d'entrée de chaque carte
+            const content = card.querySelector('.experience-card__content');
+            const number = card.querySelector('.experience-card__number');
+
+            gsap.from(content, {
+                opacity: 0,
+                y: 100,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 60%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+            gsap.from(number, {
+                opacity: 0,
+                scale: 0.5,
+                duration: 0.6,
+                ease: 'back.out(1.7)',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 70%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+    } else if (experienceCards.length > 0 && !prefersReducedMotion) {
+        // Mobile : animation simple en cascade
+        gsap.from(experienceCards, {
             opacity: 0,
             y: 50,
             stagger: 0.2,
             duration: 0.6,
             ease: 'power3.out',
             scrollTrigger: {
-                trigger: '.experiences-list',
+                trigger: '.experiences-sticky',
                 start: 'top 80%'
             }
         });
@@ -538,17 +745,112 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const agencyServiceCards = document.querySelectorAll('.agency-service-card');
-    if (agencyServiceCards.length > 0 && !prefersReducedMotion) {
-        gsap.from(agencyServiceCards, {
+    // Tilt effect sur les cartes 3D (desktop uniquement, pas tactile)
+    const tiltCards = document.querySelectorAll('[data-tilt]');
+    if (tiltCards.length > 0 && !prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+
+                gsap.to(card, {
+                    rotateX: rotateX,
+                    rotateY: rotateY,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    rotateX: 0,
+                    rotateY: 0,
+                    duration: 0.5,
+                    ease: 'power2.out'
+                });
+            });
+        });
+    }
+
+    // Animation des valeurs vision
+    const visionValues = document.querySelectorAll('.agency-vision__value');
+    if (visionValues.length > 0 && !prefersReducedMotion) {
+        gsap.from(visionValues, {
             opacity: 0,
             y: 50,
-            stagger: 0.15,
+            stagger: 0.2,
             duration: 0.6,
             ease: 'power3.out',
             scrollTrigger: {
-                trigger: '.agency-services',
+                trigger: '.agency-vision',
                 start: 'top 80%'
+            }
+        });
+    }
+
+    // Animation des icônes SVG
+    const visionIcons = document.querySelectorAll('.agency-vision__icon');
+    if (visionIcons.length > 0 && !prefersReducedMotion) {
+        visionIcons.forEach(icon => {
+            gsap.from(icon, {
+                scale: 0,
+                rotation: -180,
+                duration: 0.8,
+                ease: 'back.out(1.7)',
+                scrollTrigger: {
+                    trigger: icon,
+                    start: 'top 85%'
+                }
+            });
+        });
+    }
+
+    // Animation de fusion des cercles complémentarité
+    const complementarityDiagram = document.querySelector('.agency-complementarity__diagram');
+    const complementarityResult = document.querySelector('.agency-complementarity__result');
+
+    if (complementarityDiagram && complementarityResult && !prefersReducedMotion) {
+        ScrollTrigger.create({
+            trigger: '.agency-complementarity',
+            start: 'top 60%',
+            onEnter: () => {
+                // Faire se rapprocher les cercles
+                gsap.to('.agency-complementarity__circle--portfolio', {
+                    x: 50,
+                    duration: 1,
+                    ease: 'power3.out'
+                });
+
+                gsap.to('.agency-complementarity__circle--agency', {
+                    x: -50,
+                    duration: 1,
+                    ease: 'power3.out'
+                });
+
+                // Afficher le résultat après la fusion
+                setTimeout(() => {
+                    complementarityResult.classList.add('visible');
+                }, 500);
+            },
+            onLeaveBack: () => {
+                gsap.to('.agency-complementarity__circle--portfolio', {
+                    x: 0,
+                    duration: 0.5,
+                    ease: 'power3.out'
+                });
+
+                gsap.to('.agency-complementarity__circle--agency', {
+                    x: 0,
+                    duration: 0.5,
+                    ease: 'power3.out'
+                });
+
+                complementarityResult.classList.remove('visible');
             }
         });
     }
@@ -558,6 +860,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ========================================
 
     const contactTitle = document.querySelector('.contact-hero__title');
+    const contactSubtitle = document.querySelector('.contact-hero__subtitle');
+    
     if (contactTitle && !prefersReducedMotion) {
         const splitTitle = new SplitType(contactTitle, { types: 'chars' });
 
@@ -567,6 +871,52 @@ document.addEventListener('DOMContentLoaded', () => {
             stagger: 0.05,
             duration: 0.8,
             ease: 'power3.out'
+        });
+    }
+
+    if (contactSubtitle && !prefersReducedMotion) {
+        gsap.from(contactSubtitle, {
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            delay: 0.4,
+            ease: 'power3.out'
+        });
+    }
+
+    // Animation des infos de contact
+    const contactInfo = document.querySelector('.contact-info');
+    if (contactInfo && !prefersReducedMotion) {
+        const contactItems = contactInfo.querySelectorAll('.contact-info__item');
+        
+        gsap.from(contactItems, {
+            opacity: 0,
+            x: -50,
+            stagger: 0.15,
+            duration: 0.6,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.contact-layout',
+                start: 'top 70%'
+            }
+        });
+    }
+
+    // Animation du formulaire
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm && !prefersReducedMotion) {
+        const formFields = contactForm.querySelectorAll('.contact-form__field');
+        
+        gsap.from(formFields, {
+            opacity: 0,
+            y: 30,
+            stagger: 0.1,
+            duration: 0.5,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.contact-layout',
+                start: 'top 70%'
+            }
         });
     }
 });
