@@ -74,6 +74,9 @@
     --space-20: 5rem;
     --space-24: 6rem;
     --space-32: 8rem;
+    
+    /* Header */
+    --header-h: 5.5rem;
 
     /* Dimensions */
     --header-h: 80px;
@@ -287,6 +290,8 @@ img, video, svg {
 }
 
 @media (max-width: 768px) {
+    --header-h: 4.5rem;
+    
     .line,
     .char,
     .word {

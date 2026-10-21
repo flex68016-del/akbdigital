@@ -381,8 +381,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: calc(var(--header-h, 80px) + 1.5rem + env(safe-area-inset-top));
-    padding-bottom: 6rem env(safe-area-inset-bottom);
+    padding-top: calc(var(--header-h) + 2rem + env(safe-area-inset-top));
+    padding-bottom: 5rem env(safe-area-inset-bottom);
 }
 
 .hero__video-container {
@@ -434,6 +434,7 @@
     z-index: 3;
     text-align: center;
     padding: 0 var(--space-8);
+    margin-block: auto;
 }
 
 .hero__info {
@@ -468,7 +469,7 @@
 }
 
 .hero__title {
-    font-size: clamp(2.6rem, 13vw, var(--text-6xl));
+    font-size: clamp(2.6rem, min(9vw, 16vh), 9rem);
     font-weight: 800;
     margin-bottom: var(--space-8);
     line-height: 1;
