@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
-    // Révélation de la page à l'arrivée (après transition)
+    // Revelation de la page a l'arrivee (apres transition)
     ========================================
     const pageTransition = document.querySelector('.page-transition');
 

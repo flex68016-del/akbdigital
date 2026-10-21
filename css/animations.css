@@ -573,11 +573,11 @@
     font-family: var(--font-display);
     font-size: var(--text-4xl);
     font-weight: 700;
-    color: var(--sky);
+    color: transparent;
     -webkit-text-stroke: 1px var(--sky);
-    text-stroke: 1px var(--sky);
-    -webkit-text-fill-color: transparent;
-    text-fill-color: transparent;
+    background: linear-gradient(to bottom, transparent 50%, var(--sky) 50%);
+    -webkit-background-clip: text;
+    background-clip: text;
     margin-right: var(--space-16);
 }
 
