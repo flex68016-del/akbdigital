@@ -461,7 +461,7 @@
 }
 
 .hero__title-line {
-    overflow: hidden;
+    overflow: visible; /* Change de hidden pour eviter que le texte soit cache */
     display: block;
 }
 
