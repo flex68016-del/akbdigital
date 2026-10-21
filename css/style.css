@@ -25,7 +25,7 @@
     --font-display: 'Syne', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    /* Échelle typographique fluide */
+    /* Échelle typographique fluide avec clamp() */
     --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
     --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
     --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
@@ -152,7 +152,7 @@ video {
     display: block;
 }
 
-/* Sélection de texte */
+/* Sélection de texte en --sky avec texte --bg */
 ::selection {
     background-color: var(--sky);
     color: var(--bg);
