@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Animations de la page d'accueil
-    ========================================
+    //========================================
     const heroTitle = document.querySelector('.hero__title');
     const heroSubtitle = document.getElementById('hero-subtitle');
     const heroTimecode = document.querySelector('.hero__timecode');
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Animations de la page À propos
-    ========================================
+    //========================================
 
     // Animation du titre À propos
     const aboutTitle = document.querySelector('.about-hero__title');
@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Animations de la page Services
-    ========================================
+    //========================================
 
     // Animation du titre Services
     const servicesTitle = document.querySelector('.services-hero__title');
@@ -372,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Animations de la page Portfolio
-    ========================================
+    //========================================
 
     // Animation du titre Portfolio
     const portfolioTitle = document.querySelector('.portfolio-hero__title');
@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Animations de la page Experiences
-    ========================================
+    //========================================
 
     const experiencesTitle = document.querySelector('.experiences-hero__title');
     if (experiencesTitle && !prefersReducedMotion) {
@@ -498,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Animations de la page AKB Communication
-    ========================================
+    //========================================
 
     const agencyTitle = document.querySelector('.agency-hero__title');
     if (agencyTitle && !prefersReducedMotion) {
@@ -625,7 +625,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Animations de la page Contact
-    ========================================
+    //========================================
 
     const contactTitle = document.querySelector('.contact-hero__title');
     if (contactTitle && !prefersReducedMotion) {
@@ -642,7 +642,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Animations de la page Experiences
-    ========================================
+    //========================================
 
     const experiencesTitle = document.querySelector('.experiences-hero__title');
     if (experiencesTitle && !prefersReducedMotion) {
@@ -730,7 +730,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Animations de la page AKB Communication
-    ========================================
+    //========================================
 
     const agencyTitle = document.querySelector('.agency-hero__title');
     if (agencyTitle && !prefersReducedMotion) {
@@ -857,7 +857,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Animations de la page Contact
-    ========================================
+    //========================================
 
     const contactTitle = document.querySelector('.contact-hero__title');
     const contactSubtitle = document.querySelector('.contact-hero__subtitle');

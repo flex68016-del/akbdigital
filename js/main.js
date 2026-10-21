@@ -1,6 +1,6 @@
-/* ========================================
-   Portfolio AKB - JavaScript principal
-   ======================================== */
+// ========================================
+// Portfolio AKB - JavaScript principal
+// ========================================
 
 document.addEventListener('DOMContentLoaded', () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Curseur personnalisé (desktop et pointeur précis uniquement)
-    ========================================
+    // ========================================
     const customCursor = document.querySelector('.custom-cursor');
     const cursorDot = document.querySelector('.custom-cursor__dot');
     const cursorCircle = document.querySelector('.custom-cursor__circle');
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Header - Cache au scroll vers le bas
-    ========================================
+    //========================================
     const header = document.querySelector('.header');
     let lastScroll = 0;
 
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Menu mobile
-    ========================================
+   // ========================================
     const headerToggle = document.querySelector('.header__toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
     const mobileMenuLinks = document.querySelectorAll('.mobile-menu__link');
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Lien actif dans la navigation
-    ========================================
+   // ========================================
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.header__link');
 
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Transitions entre pages
-    ========================================
+   // ========================================
     const pageTransition = document.querySelector('.page-transition');
     const internalLinks = document.querySelectorAll('a[href^="index.html"], a[href^="a-propos.html"], a[href^="services.html"], a[href^="portfolio.html"], a[href^="experiences.html"], a[href^="akb-communication.html"], a[href^="contact.html"]');
 
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Services list interactive
-    ========================================
+    // ========================================
     const serviceItems = document.querySelectorAll('.service-item');
     const floatingImage = document.querySelector('.service-item__floating-image');
 
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Portfolio : Génération de la grille et filtres
-    ========================================
+    // ========================================
     const portfolioGrid = document.getElementById('portfolio-grid');
     const portfolioFilters = document.querySelectorAll('.portfolio-filter');
 
@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Lightbox
-    ========================================
+   // ========================================
     const lightbox = document.getElementById('lightbox');
     const lightboxMediaContainer = document.getElementById('lightbox-media-container');
     const lightboxTitle = document.getElementById('lightbox-title');
