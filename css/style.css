@@ -72,6 +72,10 @@
     --space-24: 6rem;
     --space-32: 8rem;
 
+    /* Dimensions */
+    --header-h: 80px;
+    --container-max: 1200px;
+
     /* Rayons */
     --radius-sm: 4px;
     --radius-md: 8px;
@@ -111,6 +115,7 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
 }
 
 body {
@@ -121,7 +126,9 @@ body {
     background-color: var(--bg);
     background-image: var(--grad-bg);
     min-height: 100vh;
-    overflow-x: hidden;
+    min-height: 100svh;
+    min-height: 100dvh;
+    overflow-x: clip;
     position: relative;
 }
 
@@ -239,7 +246,40 @@ p {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 var(--space-8);
+    padding: 0 clamp(1.25rem, 4vw, var(--space-8));
+}
+
+img, video, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--space-4);
+    }
+}
+
+/* ========================================
+   Responsive global
+   ======================================== */
+@media (hover: none) and (pointer: coarse) {
+    .custom-cursor {
+        display: none;
+    }
+}
+
+section {
+    padding-top: calc(var(--header-h) + 2rem + env(safe-area-inset-top));
+    padding-bottom: 4rem env(safe-area-inset-bottom);
+}
+
+@media (max-width: 768px) {
+    section {
+        padding-top: calc(var(--header-h) + 1.5rem + env(safe-area-inset-top));
+        padding-bottom: 3rem env(safe-area-inset-bottom);
+    }
 }
 
 .section {
