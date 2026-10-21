@@ -75,7 +75,174 @@
         <a href="contact.html" class="mobile-menu__link">Contact</a>
     </div>
 
-    <!-- Contenu à venir -->
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__video-container">
+            <video class="hero__video" autoplay muted loop playsinline poster="assets/images/hero-poster.jpg">
+                <source src="assets/videos/hero-showreel.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero__overlay"></div>
+        <div class="hero__glow"></div>
+
+        <!-- Viseurs décoratifs -->
+        <div class="viewfinder hero__viewfinder-tl">
+            <div class="viewfinder__corner viewfinder__corner--tl"></div>
+            <div class="viewfinder__corner viewfinder__corner--tr"></div>
+            <div class="viewfinder__corner viewfinder__corner--bl"></div>
+            <div class="viewfinder__corner viewfinder__corner--br"></div>
+        </div>
+        <div class="viewfinder hero__viewfinder-tr">
+            <div class="viewfinder__corner viewfinder__corner--tl"></div>
+            <div class="viewfinder__corner viewfinder__corner--tr"></div>
+            <div class="viewfinder__corner viewfinder__corner--bl"></div>
+            <div class="viewfinder__corner viewfinder__corner--br"></div>
+        </div>
+        <div class="viewfinder hero__viewfinder-bl">
+            <div class="viewfinder__corner viewfinder__corner--tl"></div>
+            <div class="viewfinder__corner viewfinder__corner--tr"></div>
+            <div class="viewfinder__corner viewfinder__corner--bl"></div>
+            <div class="viewfinder__corner viewfinder__corner--br"></div>
+        </div>
+        <div class="viewfinder hero__viewfinder-br">
+            <div class="viewfinder__corner viewfinder__corner--tl"></div>
+            <div class="viewfinder__corner viewfinder__corner--tr"></div>
+            <div class="viewfinder__corner viewfinder__corner--bl"></div>
+            <div class="viewfinder__corner viewfinder__corner--br"></div>
+        </div>
+
+        <div class="hero__content">
+            <div class="hero__info">
+                <div class="hero__rec">
+                    <span class="hero__rec-dot"></span>
+                    <span>REC</span>
+                </div>
+                <span class="hero__timecode">00:00:00</span>
+                <span>—</span>
+                <span>LOMÉ, TOGO</span>
+            </div>
+
+            <h1 class="hero__title">
+                <span class="hero__title-line">ALY</span>
+                <span class="hero__title-line"><span class="hero__title-gradient">KOFFI</span></span>
+                <span class="hero__title-line">BRICE</span>
+            </h1>
+
+            <p class="hero__subtitle" id="hero-subtitle">Vidéaste</p>
+
+            <p class="hero__tagline">
+                Je crée des contenus audiovisuels qui donnent vie à votre image.
+            </p>
+
+            <div class="hero__cta">
+                <a href="portfolio.html" class="btn btn--primary">Découvrir mes réalisations</a>
+                <a href="contact.html" class="btn btn--outline">Me contacter</a>
+            </div>
+        </div>
+
+        <div class="hero__scroll-indicator">
+            <div class="hero__scroll-line"></div>
+            <span class="hero__scroll-text">Scroll</span>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee__content">
+            <span class="marquee__text">VIDÉO</span>
+            <span class="marquee__text">—</span>
+            <span class="marquee__text">PHOTO</span>
+            <span class="marquee__text">—</span>
+            <span class="marquee__text">MONTAGE</span>
+            <span class="marquee__text">—</span>
+            <span class="marquee__text">COMMUNITY MANAGEMENT</span>
+            <span class="marquee__text">—</span>
+            <span class="marquee__text">VIDÉO</span>
+            <span class="marquee__text">—</span>
+            <span class="marquee__text">PHOTO</span>
+            <span class="marquee__text">—</span>
+            <span class="marquee__text">MONTAGE</span>
+            <span class="marquee__text">—</span>
+            <span class="marquee__text">COMMUNITY MANAGEMENT</span>
+            <span class="marquee__text">—</span>
+        </div>
+    </div>
+
+    <!-- Services Preview -->
+    <section class="section services-preview">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title__number">01</span>
+                <h2 class="section-title__text">Services</h2>
+            </div>
+            <div class="services-preview__grid">
+                <div class="service-card">
+                    <div class="service-card__icon">🎬</div>
+                    <h3 class="service-card__title">Production Vidéo</h3>
+                    <p class="service-card__description">Captation, publicités, clips et contenus pour réseaux sociaux avec une approche cinématographique.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">📸</div>
+                    <h3 class="service-card__title">Photographie</h3>
+                    <p class="service-card__description">Portraits, événements, produits et éditorial. Chaque cliché raconte une histoire.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">🎞️</div>
+                    <h3 class="service-card__title">Montage & CM</h3>
+                    <p class="service-card__description">Post-production soignée et gestion stratégique de vos communautés en ligne.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="section featured-projects">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title__number">02</span>
+                <h2 class="section-title__text">À la une</h2>
+            </div>
+            <div class="featured-projects__grid">
+                <div class="project-card">
+                    <img src="assets/images/portfolio-1-placeholder.jpg" alt="Projet 1" class="project-card__image" loading="lazy">
+                    <div class="project-card__overlay">
+                        <div>
+                            <p class="project-card__category">Vidéo</p>
+                            <h3 class="project-card__title">[Nom du projet]</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/portfolio-2-placeholder.jpg" alt="Projet 2" class="project-card__image" loading="lazy">
+                    <div class="project-card__overlay">
+                        <div>
+                            <p class="project-card__category">Photo</p>
+                            <h3 class="project-card__title">[Nom du projet]</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/portfolio-3-placeholder.jpg" alt="Projet 3" class="project-card__image" loading="lazy">
+                    <div class="project-card__overlay">
+                        <div>
+                            <p class="project-card__category">Montage</p>
+                            <h3 class="project-card__title">[Nom du projet]</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-section__content">
+                <h2 class="cta-section__title">Un projet en tête ? Parlons-en.</h2>
+                <a href="contact.html" class="btn btn--primary">Me contacter</a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">

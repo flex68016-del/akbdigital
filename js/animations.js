@@ -85,4 +85,144 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // ========================================
+    // Animations de la page d'accueil
+    ========================================
+    const heroTitle = document.querySelector('.hero__title');
+    const heroSubtitle = document.getElementById('hero-subtitle');
+    const heroTimecode = document.querySelector('.hero__timecode');
+    const heroVideo = document.querySelector('.hero__video');
+    const heroGlow = document.querySelector('.hero__glow');
+
+    // Animation du titre hero (SplitType)
+    if (heroTitle && !prefersReducedMotion) {
+        const splitTitle = new SplitType(heroTitle, { types: 'lines' });
+
+        gsap.from(splitTitle.lines, {
+            y: 100,
+            opacity: 0,
+            stagger: 0.15,
+            duration: 1,
+            ease: 'power3.out',
+            delay: 0.5
+        });
+    }
+
+    // Animation du sous-titre qui alterne
+    if (heroSubtitle && !prefersReducedMotion) {
+        const subtitles = ['Vidéaste', 'Photographe', 'Monteur vidéo', 'Community Manager'];
+        let currentIndex = 0;
+
+        function rotateSubtitle() {
+            // Sortie
+            gsap.to(heroSubtitle, {
+                opacity: 0,
+                y: -20,
+                duration: 0.3,
+                ease: 'power2.in',
+                onComplete: () => {
+                    currentIndex = (currentIndex + 1) % subtitles.length;
+                    heroSubtitle.textContent = subtitles[currentIndex];
+                    // Entrée
+                    gsap.to(heroSubtitle, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                }
+            });
+        }
+
+        setInterval(rotateSubtitle, 3000);
+    }
+
+    // Timecode qui avance en temps réel
+    if (heroTimecode) {
+        function updateTimecode() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            heroTimecode.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        updateTimecode();
+        setInterval(updateTimecode, 1000);
+    }
+
+    // Parallaxe de la vidéo selon la souris et le scroll
+    if (heroVideo && !prefersReducedMotion) {
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
+        });
+
+        gsap.to(heroVideo, {
+            x: mouseX,
+            y: mouseY,
+            duration: 1,
+            ease: 'power2.out'
+        });
+
+        // Parallaxe au scroll
+        gsap.to(heroVideo, {
+            yPercent: 20,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+    }
+
+    // Animation du halo glow
+    if (heroGlow && !prefersReducedMotion) {
+        gsap.to(heroGlow, {
+            y: '20%',
+            x: '-10%',
+            duration: 8,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+        });
+    }
+
+    // Animation des cartes de service en cascade
+    const serviceCards = document.querySelectorAll('.service-card');
+    if (serviceCards.length > 0 && !prefersReducedMotion) {
+        gsap.from(serviceCards, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.services-preview',
+                start: 'top 80%'
+            }
+        });
+    }
+
+    // Animation des projets à la une
+    const projectCards = document.querySelectorAll('.project-card');
+    if (projectCards.length > 0 && !prefersReducedMotion) {
+        gsap.from(projectCards, {
+            opacity: 0,
+            scale: 0.9,
+            stagger: 0.2,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.featured-projects',
+                start: 'top 80%'
+            }
+        });
+    }
 });
