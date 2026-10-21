@@ -3,6 +3,26 @@
    ======================================== */
 
 /* ========================================
+   Skip Link (Accessibilité)
+   ======================================== */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    background: var(--sky);
+    color: var(--bg);
+    padding: var(--space-3) var(--space-6);
+    z-index: 9999;
+    text-decoration: none;
+    font-weight: 600;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ========================================
    Variables CSS
    ======================================== */
 :root {
