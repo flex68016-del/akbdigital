@@ -291,12 +291,6 @@ img, video, svg {
 
 @media (max-width: 768px) {
     --header-h: 4.5rem;
-    
-    .line,
-    .char,
-    .word {
-        white-space: normal !important;
-    }
 }
 
 /* Fallback images */
