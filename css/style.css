@@ -79,7 +79,6 @@
     --header-h: 5.5rem;
 
     /* Dimensions */
-    --header-h: 80px;
     --container-max: 1200px;
 
     /* Rayons */
@@ -290,7 +289,9 @@ img, video, svg {
 }
 
 @media (max-width: 768px) {
-    --header-h: 4.5rem;
+    :root {
+        --header-h: 4.5rem;
+    }
 }
 
 /* Fallback images */
@@ -298,20 +299,25 @@ img.is-fallback {
     background: linear-gradient(135deg, #050B1A 0%, #1E6BFF 100%);
 }
 
-section {
+/* Page start / hero section - padding for fixed header */
+main > section:first-child,
+.page-hero,
+.hero {
     padding-top: calc(var(--header-h) + 2rem + env(safe-area-inset-top));
-    padding-bottom: 4rem env(safe-area-inset-bottom);
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom));
 }
 
 @media (max-width: 768px) {
-    section {
+    main > section:first-child,
+    .page-hero,
+    .hero {
         padding-top: calc(var(--header-h) + 1.5rem + env(safe-area-inset-top));
-        padding-bottom: 3rem env(safe-area-inset-bottom);
+        padding-bottom: calc(3rem + env(safe-area-inset-bottom));
     }
 }
 
 .section {
-    padding: var(--space-32) 0;
+    padding: clamp(3rem, 8vw, 6rem) 0;
 }
 
 .grid {
