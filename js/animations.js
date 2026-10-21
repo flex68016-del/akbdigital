@@ -6,11 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Enregistrer les plugins GSAP
     gsap.registerPlugin(ScrollTrigger, Flip, SplitType);
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // ========================================
     // Loader d'introduction (une fois par session)
     // ========================================
     const loader = document.querySelector('.loader');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (loader && !prefersReducedMotion) {
         // Vérifier si le loader a déjà été joué cette session

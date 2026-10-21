@@ -69,3 +69,212 @@
         display: none;
     }
 }
+
+/* ========================================
+   Header fixe
+   ======================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: var(--space-6) 0;
+    background: rgba(5, 11, 26, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(77, 184, 255, 0.1);
+    transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.header--hidden {
+    transform: translateY(-100%);
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.header__logo--accent {
+    color: var(--sky);
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.header__link {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color var(--duration-fast) var(--ease-out);
+}
+
+.header__link:hover,
+.header__link--active {
+    color: var(--sky);
+}
+
+.header__link--active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--grad-main);
+}
+
+/* ========================================
+   Menu mobile
+   ======================================== */
+.header__toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: var(--text-2xl);
+    cursor: pointer;
+    z-index: 1002;
+    padding: var(--space-2);
+}
+
+.header__toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    margin: 4px 0;
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.header__toggle--active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.header__toggle--active span:nth-child(2) {
+    opacity: 0;
+}
+
+.header__toggle--active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--duration-normal) var(--ease-out), visibility var(--duration-normal);
+}
+
+.mobile-menu--open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu__link {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.mobile-menu--open .mobile-menu__link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .header__nav {
+        display: none;
+    }
+
+    .header__toggle {
+        display: block;
+    }
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.footer {
+    padding: var(--space-24) 0 var(--space-12);
+    background: var(--bg-2);
+    border-top: 1px solid rgba(77, 184, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    height: 200%;
+    background: var(--grad-glow);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.footer__content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-12);
+}
+
+.footer__section h4 {
+    color: var(--sky);
+    margin-bottom: var(--space-4);
+}
+
+.footer__link {
+    display: block;
+    color: var(--muted);
+    margin-bottom: var(--space-2);
+    transition: color var(--duration-fast) var(--ease-out);
+}
+
+.footer__link:hover {
+    color: var(--sky);
+}
+
+.footer__bottom {
+    position: relative;
+    z-index: 1;
+    margin-top: var(--space-16);
+    padding-top: var(--space-8);
+    border-top: 1px solid rgba(77, 184, 255, 0.1);
+    text-align: center;
+    color: var(--muted);
+    font-size: var(--text-sm);
+}
