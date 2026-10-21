@@ -466,11 +466,8 @@
 }
 
 .hero__title-gradient {
-    color: var(--sky-light); /* Couleur unie claire pour meilleure visibilite */
-    background: linear-gradient(135deg, #A8DEFF 0%, #FFFFFF 50%, #A8DEFF 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--sky-light); /* Couleur unie claire bleu ciel */
+    /* background-clip: text desactive pour meilleure visibilite */
 }
 
 .hero__subtitle {
