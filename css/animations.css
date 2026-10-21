@@ -461,8 +461,8 @@
 }
 
 .hero__title-line {
-    overflow: visible; /* Change de hidden pour eviter que le texte soit cache */
-    display: block;
+    overflow: visible;
+    display: inline; /* Change de block a inline pour affichage sur une ligne */
 }
 
 .hero__title-gradient {
