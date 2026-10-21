@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sous-titre hero qui alterne
     const heroSubtitle = document.getElementById('hero-subtitle');
     if (heroSubtitle && !prefersReducedMotion) {
-        const subtitles = ['Videaste', 'Photographe', 'Monteur video', 'Community Manager'];
+        const subtitles = ['Vidéaste', 'Photographe', 'Monteur vidéo', 'Community Manager'];
         let currentIndex = 0;
 
         function rotateSubtitle() {
