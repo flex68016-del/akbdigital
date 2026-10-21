@@ -407,6 +407,168 @@ document.addEventListener('DOMContentLoaded', () => {
 
         observer.observe(lightbox, { attributes: true });
     }
+
+    // ========================================
+    // Animations de la page Experiences
+    ========================================
+
+    const experiencesTitle = document.querySelector('.experiences-hero__title');
+    if (experiencesTitle && !prefersReducedMotion) {
+        const splitTitle = new SplitType(experiencesTitle, { types: 'chars' });
+
+        gsap.from(splitTitle.chars, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.05,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    }
+
+    const experienceItems = document.querySelectorAll('.experience-item');
+    if (experienceItems.length > 0 && !prefersReducedMotion) {
+        gsap.from(experienceItems, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 0.6,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.experiences-list',
+                start: 'top 80%'
+            }
+        });
+    }
+
+    // ========================================
+    // Animations de la page AKB Communication
+    ========================================
+
+    const agencyTitle = document.querySelector('.agency-hero__title');
+    if (agencyTitle && !prefersReducedMotion) {
+        const splitTitle = new SplitType(agencyTitle, { types: 'chars' });
+
+        gsap.from(splitTitle.chars, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.05,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    }
+
+    const agencyServiceCards = document.querySelectorAll('.agency-service-card');
+    if (agencyServiceCards.length > 0 && !prefersReducedMotion) {
+        gsap.from(agencyServiceCards, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.15,
+            duration: 0.6,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.agency-services',
+                start: 'top 80%'
+            }
+        });
+    }
+
+    // ========================================
+    // Animations de la page Contact
+    ========================================
+
+    const contactTitle = document.querySelector('.contact-hero__title');
+    if (contactTitle && !prefersReducedMotion) {
+        const splitTitle = new SplitType(contactTitle, { types: 'chars' });
+
+        gsap.from(splitTitle.chars, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.05,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    }
+
+    // ========================================
+    // Animations de la page Experiences
+    ========================================
+
+    const experiencesTitle = document.querySelector('.experiences-hero__title');
+    if (experiencesTitle && !prefersReducedMotion) {
+        const splitTitle = new SplitType(experiencesTitle, { types: 'chars' });
+
+        gsap.from(splitTitle.chars, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.05,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    }
+
+    const experienceItems = document.querySelectorAll('.experience-item');
+    if (experienceItems.length > 0 && !prefersReducedMotion) {
+        gsap.from(experienceItems, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 0.6,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.experiences-list',
+                start: 'top 80%'
+            }
+        });
+    }
+
+    // ========================================
+    // Animations de la page AKB Communication
+    ========================================
+
+    const agencyTitle = document.querySelector('.agency-hero__title');
+    if (agencyTitle && !prefersReducedMotion) {
+        const splitTitle = new SplitType(agencyTitle, { types: 'chars' });
+
+        gsap.from(splitTitle.chars, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.05,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    }
+
+    const agencyServiceCards = document.querySelectorAll('.agency-service-card');
+    if (agencyServiceCards.length > 0 && !prefersReducedMotion) {
+        gsap.from(agencyServiceCards, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.15,
+            duration: 0.6,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.agency-services',
+                start: 'top 80%'
+            }
+        });
+    }
+
+    // ========================================
+    // Animations de la page Contact
+    ========================================
+
+    const contactTitle = document.querySelector('.contact-hero__title');
+    if (contactTitle && !prefersReducedMotion) {
+        const splitTitle = new SplitType(contactTitle, { types: 'chars' });
+
+        gsap.from(splitTitle.chars, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.05,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    }
 });
 
 // Ajouter l'animation d'ouverture depuis la miniature pour la lightbox

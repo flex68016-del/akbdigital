@@ -1447,3 +1447,242 @@
         display: none;
     }
 }
+
+/* ========================================
+   Page Experiences
+   ======================================== */
+.experiences-hero {
+    padding: var(--space-32) 0;
+    text-align: center;
+}
+
+.experiences-hero__title {
+    font-size: var(--text-6xl);
+    margin-bottom: var(--space-12);
+}
+
+.experiences-list {
+    padding: var(--space-32) 0;
+}
+
+.experience-item {
+    padding: var(--space-16) 0;
+    border-bottom: 1px solid rgba(77, 184, 255, 0.1);
+}
+
+.experience-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-6);
+}
+
+.experience-item__date {
+    font-family: 'Courier New', monospace;
+    font-size: var(--text-sm);
+    color: var(--sky);
+}
+
+.experience-item__title {
+    font-size: var(--text-3xl);
+    color: var(--text);
+}
+
+.experience-item__company {
+    font-size: var(--text-xl);
+    color: var(--muted);
+    margin-bottom: var(--space-4);
+}
+
+.experience-item__description {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.experience-item__tasks {
+    margin-top: var(--space-6);
+}
+
+.experience-item__tasks-list {
+    list-style: none;
+    padding: 0;
+}
+
+.experience-item__tasks-list li {
+    color: var(--muted);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-4);
+    position: relative;
+}
+
+.experience-item__tasks-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--sky);
+}
+
+/* ========================================
+   Page AKB Communication
+   ======================================== */
+.agency-hero {
+    padding: var(--space-32) 0;
+    text-align: center;
+}
+
+.agency-hero__title {
+    font-size: var(--text-6xl);
+    margin-bottom: var(--space-6);
+}
+
+.agency-hero__subtitle {
+    font-size: var(--text-2xl);
+    color: var(--sky);
+    margin-bottom: var(--space-12);
+}
+
+.agency-distinction {
+    padding: var(--space-32) 0;
+}
+
+.agency-distinction__card {
+    background: var(--bg-2);
+    border: 1px solid rgba(77, 184, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: var(--space-12);
+    margin-bottom: var(--space-8);
+}
+
+.agency-distinction__title {
+    font-size: var(--text-2xl);
+    color: var(--sky);
+    margin-bottom: var(--space-4);
+}
+
+.agency-services {
+    padding: var(--space-32) 0;
+}
+
+.agency-services__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+}
+
+.agency-service-card {
+    background: var(--bg-2);
+    border: 1px solid rgba(77, 184, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+}
+
+.agency-service-card__title {
+    font-size: var(--text-xl);
+    color: var(--sky);
+    margin-bottom: var(--space-4);
+}
+
+.agency-service-card__description {
+    color: var(--muted);
+}
+
+@media (max-width: 768px) {
+    .agency-services__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   Page Contact
+   ======================================== */
+.contact-hero {
+    padding: var(--space-32) 0;
+    text-align: center;
+}
+
+.contact-hero__title {
+    font-size: var(--text-6xl);
+    margin-bottom: var(--space-12);
+}
+
+.contact-layout {
+    padding: var(--space-32) 0;
+}
+
+.contact-layout__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+}
+
+.contact-info {
+    padding: var(--space-8);
+}
+
+.contact-info__title {
+    font-size: var(--text-2xl);
+    color: var(--sky);
+    margin-bottom: var(--space-8);
+}
+
+.contact-info__item {
+    margin-bottom: var(--space-6);
+}
+
+.contact-info__label {
+    color: var(--muted);
+    margin-bottom: var(--space-2);
+}
+
+.contact-info__value {
+    font-size: var(--text-lg);
+    color: var(--text);
+}
+
+.contact-form {
+    background: var(--bg-2);
+    border: 1px solid rgba(77, 184, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: var(--space-12);
+}
+
+.contact-form__field {
+    margin-bottom: var(--space-6);
+}
+
+.contact-form__label {
+    display: block;
+    margin-bottom: var(--space-2);
+    color: var(--text);
+}
+
+.contact-form__input,
+.contact-form__textarea,
+.contact-form__select {
+    width: 100%;
+    padding: var(--space-4);
+    background: var(--bg);
+    border: 1px solid rgba(77, 184, 255, 0.2);
+    border-radius: var(--radius-md);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+}
+
+.contact-form__input:focus,
+.contact-form__textarea:focus,
+.contact-form__select:focus {
+    outline: none;
+    border-color: var(--sky);
+}
+
+.contact-form__submit {
+    width: 100%;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .contact-layout__grid {
+        grid-template-columns: 1fr;
+    }
+}
