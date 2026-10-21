@@ -1,0 +1,34 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+.windsurf/
+.windsurfrules
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environnement
+.env
+.env.local
+.env.*.local
+
+# Node (si ajouté plus tard)
+node_modules/
+dist/
+build/
+
+# Images/vidéos lourds (optionnel - décommentez si nécessaire)
+# assets/images/*.jpg
+# assets/images/*.png
+# assets/images/*.mp4
