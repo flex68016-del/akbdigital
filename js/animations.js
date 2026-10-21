@@ -369,4 +369,42 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ========================================
+    // Animations de la page Portfolio
+    ========================================
+
+    // Animation du titre Portfolio
+    const portfolioTitle = document.querySelector('.portfolio-hero__title');
+    if (portfolioTitle && !prefersReducedMotion) {
+        const splitTitle = new SplitType(portfolioTitle, { types: 'chars' });
+
+        gsap.from(splitTitle.chars, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.05,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    }
+
+    // Animation de la lightbox
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox && !prefersReducedMotion) {
+        const lightboxContent = lightbox.querySelector('.lightbox__content');
+
+        // Animation d'ouverture
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class' && lightbox.classList.contains('lightbox--active')) {
+                    gsap.fromTo(lightboxContent,
+                        { scale: 0.8, opacity: 0 },
+                        { scale: 1, opacity: 1, duration: 0.4, ease: 'power3.out' }
+                    );
+                }
+            });
+        });
+
+        observer.observe(lightbox, { attributes: true });
+    }
 });
