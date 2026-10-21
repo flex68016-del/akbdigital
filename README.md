@@ -1,121 +1,225 @@
 # Portfolio AKB - ALY Koffi Brice
 
-Site portfolio professionnel pour ALY Koffi Brice (AKB / Mr Brice), vidéaste, photographe, monteur vidéo et Community Manager basé à Lomé, Togo.
+Portfolio professionnel d'ALY Koffi Brice (AKB), vidéaste, photographe, monteur vidéo et Community Manager basé à Lomé, Togo.
 
-## 📋 Description
+## 🎯 À propos
 
-Ce site présente :
-- L'identité et le parcours d'ALY Koffi Brice
-- Les meilleures réalisations photo et vidéo
-- Les services proposés (vidéo, photo, montage, community management)
-- Les expériences professionnelles
-- L'agence AKB Communication (distincte du portfolio personnel)
-- Un formulaire de contact pour les demandes de devis
+ALY Koffi Brice, également connu sous le nom de AKB ou Mr Brice, est un créatif passionné par l'image et la communication digitale. Basé à Lomé, Togo, il offre ses services de production audiovisuelle et de gestion de communauté aux entreprises, marques et particuliers.
 
-## 🎨 Design
+## 🌐 Coordonnées
 
-- **Style** : Cinématographique, moderne et premium
-- **Ambiance** : Ciel de nuit (bleu nuit profond avec dégradés bleu électrique vers bleu ciel)
-- **Typographie** : Syne (titres) + Inter (texte)
-- **Animations** : GSAP avec ScrollTrigger, Lenis (smooth scroll), SplitType
-
-## 🏗️ Structure
-
-```
-portfolio/
-├── index.html              # Page d'accueil
-├── a-propos.html           # À propos
-├── services.html           # Services
-├── portfolio.html          # Portfolio
-├── experiences.html        # Expériences
-├── akb-communication.html  # Page agence
-├── contact.html            # Contact
-├── css/
-│   ├── style.css          # Styles principaux
-│   └── animations.css     # Animations CSS
-├── js/
-│   ├── main.js            # JavaScript principal
-│   └── animations.js      # Animations GSAP
-├── assets/
-│   ├── images/            # Images (placeholders)
-│   └── videos/            # Vidéos (placeholders)
-└── README.md
-```
-
-## 🛠️ Technologies
-
-- **HTML5** : Structure sémantique
-- **CSS3** : Variables CSS, BEM, responsive design
-- **JavaScript ES6+** : Vanilla JS
-- **Librairies (CDN)** :
-  - GSAP 3.12.2 (animations)
-  - GSAP ScrollTrigger (scroll-based animations)
-  - GSAP Flip (layout transitions)
-  - Lenis 1.0.29 (smooth scroll)
-  - SplitType (text splitting)
-
-## 📱 Responsive
-
-Le site est entièrement responsive et s'adapte à tous les écrans :
-- Mobile (< 768px)
-- Tablet (768px - 1024px)
-- Desktop (> 1024px)
-
-## ♿ Accessibilité
-
-- Navigation au clavier fonctionnelle
-- Focus visible sur les éléments interactifs
-- Respect de `prefers-reduced-motion`
-- Balises sémantiques HTML5
-- Attributs ARIA appropriés
-- Alt text sur les images
-
-## 🚀 Installation
-
-1. Cloner le dépôt
-2. Ouvrir `index.html` dans un navigateur
-3. Les librairies sont chargées via CDN, pas besoin de npm
-
-## 📝 Personnalisation
-
-### Remplacer les placeholders
-
-Les images et vidéos actuelles sont des placeholders. Remplacez-les par vos propres fichiers dans `assets/images/` et `assets/videos/`.
-
-### Contenu à compléter
-
-Certains contenus sont marqués `[À VÉRIFIER]` ou `[À COMPLÉTER]` :
-- Noms de projets dans le portfolio
-- Dates et durées dans les expériences
-- Détails des expériences précédentes
-- Liens vers les réseaux sociaux
-
-### Formulaire de contact
-
-Le formulaire est un placeholder. Connectez-le à :
-- Formspree (https://formspree.io)
-- EmailJS (https://www.emailjs.com)
-- Un backend personnalisé
-
-## 🎨 Palette de couleurs
-
-```css
---bg: #050B1A          /* Fond principal */
---bg-2: #0B1630        /* Fond secondaire */
---text: #F4F8FF        /* Texte */
---blue: #1E6BFF        /* Bleu électrique */
---sky: #4DB8FF         /* Bleu ciel (accent) */
---sky-light: #A8DEFF   /* Ciel clair */
---muted: #8FA3BF       /* Texte secondaire */
---rec: #FF3B3B         /* Point REC */
-```
-
-## 📞 Contact
-
-- **Tél/WhatsApp** : +228 93 39 53 77
+- **Téléphone / WhatsApp** : +228 93 39 53 77
 - **Email** : alykoffibrice00@gmail.com
 - **Localisation** : Lomé, Togo
+- **GitHub** : https://github.com/flex68016-del/akbdigital.git
 
-## 📄 Licence
+## 🛠️ Stack Technique
 
-Tous droits réservés © ALY Koffi Brice
+- **HTML5**, **CSS3**, **JavaScript (ES6+)**
+- **Aucun framework** - Pure Vanilla JS
+- **Librairies CDN** :
+  - GSAP 3.12.2 (animation)
+  - GSAP ScrollTrigger (scroll-based animations)
+  - GSAP Flip (FLIP animations)
+  - Lenis (smooth scroll)
+  - SplitType (text splitting)
+
+## 📁 Structure du projet
+
+```
+/
+├── index.html                  # Page d'accueil
+├── a-propos.html               # À propos
+├── services.html               # Services
+├── portfolio.html              # Portfolio avec filtres
+├── experiences.html            # Expériences professionnelles
+├── akb-communication.html       # Page agence AKB Communication
+├── contact.html                 # Formulaire de contact
+├── 404.html                    # Page 404 personnalisée
+├── sitemap.xml                  # Sitemap SEO
+├── robots.txt                   # Robots.txt
+├── css/
+│   ├── style.css               # Design system et styles principaux
+│   └── animations.css          # Animations CSS
+├── js/
+│   ├── main.js                 # Navigation, Lenis, interactions
+│   ├── animations.js           # Animations GSAP centralisées
+│   ├── portfolio-data.js        # Données du portfolio
+│   └── experiences-data.js      # Données des expériences
+└── assets/
+    ├── images/                  # Images du site
+    ├── videos/                   # Vidéos
+    ├── icons/                    # Icônes
+    └── fonts/                    # Polices (facultatif)
+```
+
+## 🚀 Installation et développement
+
+1. Clonez le dépôt :
+```bash
+git clone https://github.com/flex68016-del/akbdigital.git
+cd akbdigital
+```
+
+2. Ouvrez `index.html` dans votre navigateur pour voir le site.
+
+3. Pour le développement, serveur local :
+```bash
+python -m http.server 8000
+# ou
+npx serve
+```
+
+## 📝 Personnalisation avant publication
+
+### 1. Remplacer les médias
+
+Les fichiers placeholder doivent être remplacés par vos vraies images et vidéos :
+
+**Images à ajouter dans `assets/images/` :**
+- `hero-poster.jpg` - Image de fond du hero (1200×630 minimum)
+- `portrait-brice.jpg` - Photo de profil
+- Images portfolio - Remplacer les placeholders `portfolio-X-placeholder.jpg`
+- `favicon-32x32.png` - Favicon 32×32
+- `favicon-16x16.png` - Favicon 16×16
+- `apple-touch-icon.png` - Icon Apple Touch (180×180)
+
+**Vidéo à ajouter dans `assets/videos/` :**
+- `hero-showreel.mp4` - Vidéo de showreel du hero (boucle, muette)
+
+### 2. Configurer le formulaire de contact
+
+Le formulaire dans `contact.html` utilise soit Formspree soit EmailJS. Configurez l'un des deux :
+
+**Option A : Formspree (plus simple)**
+1. Créez un compte sur https://formspree.io
+2. Créez un nouveau formulaire
+3. Copiez votre Form ID
+4. Dans `contact.html` ligne ~210, remplacez :
+   ```javascript
+   const FORMSPREE_ID = 'VOTRE_FORM_ID';
+   ```
+5. Décommentez le bloc Formspree (lignes ~230-247)
+
+**Option B : EmailJS (plus de personnalisation)**
+1. Créez un compte sur https://www.emailjs.com
+2. Créez un Email Service (ex: Gmail)
+3. Créez un Email Template avec les variables : `{{from_name}}`, `{{from_email}}`, `{{subject}}`, `{{message}}`
+4. Copiez vos identifiants
+5. Dans `contact.html` lignes ~214-216, remplacez :
+   ```javascript
+   const EMAILJS_SERVICE_ID = 'VOTRE_SERVICE_ID';
+   const EMAILJS_TEMPLATE_ID = 'VOTRE_TEMPLATE_ID';
+   const EMAILJS_PUBLIC_KEY = 'VOTRE_PUBLIC_KEY';
+   ```
+6. Ajoutez le script EmailJS dans le `<head>` de toutes les pages :
+   ```html
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+   ```
+7. Décommentez le bloc EmailJS (lignes ~249-262)
+
+### 3. Ajouter des réalisations au portfolio
+
+Éditez `js/portfolio-data.js` et ajoutez vos projets dans le tableau `portfolioData` :
+
+```javascript
+{
+    id: 13,
+    titre: "Nom du projet",
+    categories: ["Événements", "Marques"],
+    type: "video",
+    miniature: "assets/images/votre-miniature.jpg",
+    src: "assets/videos/votre-video.mp4",
+    client: "Nom du client"
+}
+```
+
+### 4. Compléter les informations expériences
+
+Dans `js/experiences-data.js`, ajoutez vos expériences supplémentaires ou éditez le HTML de `experiences.html` pour :
+
+- Remplacer `[DATE À VÉRIFIER]` par les vraies dates
+- Compléter les descriptions des postes encore vides
+- Ajouter `[CRÉDITS À VÉRIFIER]` pour les collaborations
+
+### 5. Mettre à jour les liens réseaux sociaux
+
+Dans le footer de chaque page, remplacez les liens placeholder par vos vrais comptes :
+- Instagram
+- Facebook
+- YouTube
+- TikTok
+
+### 6. Champs [À VÉRIFIER] à compléter
+
+**Dates d'expériences (`experiences.html`) :**
+- Midzo Tech / Mayo App : [DATE À VÉRIFIER]
+- Le Roi Lapin : [DATE À VÉRIFIER]
+- Démarcation artisanale : [DATE À VÉRIFIER]
+- Dunenyo Zan : [DATE À VÉRIFIER]
+- ADN : [DATE À VÉRIFIER]
+- AKB Communication : [DATE À VÉRIFIER]
+
+**Crédits et mentions :**
+- [CRÉDITS À VÉRIFIER] dans les projets portfolio
+- [CRÉDITS À VÉRIFIER] dans les expériences
+
+**Slogan agence (`akb-communication.html`) :**
+- [SLOGAN À VALIDER] : Votre image, notre vision
+
+**URL GitHub :**
+- Vérifiez que `https://github.com/flex68016-del/akbdigital.git` est correct
+
+## 🌐 Déploiement
+
+### Option 1 : GitHub Pages (gratuit)
+
+1. Pushez votre code sur GitHub :
+```bash
+git add .
+git commit -m "feat: publication ready"
+git push origin main
+```
+
+2. Allez sur GitHub → Settings → Pages
+3. Activez GitHub Pages
+4. Sélectionnez la branche `main`
+5. Votre site sera disponible à `https://flex68016-del.github.io/akbdigital/`
+
+### Option 2 : Netlify (gratuit)
+
+1. Connectez-vous sur https://app.netlify.com
+2. Cliquez sur "Add new site" → "Import from Git"
+3. Connectez votre compte GitHub
+4. Sélectionnez le dépôt `akbdigital`
+5. Netlify déploiera automatiquement votre site
+
+### Option 3 : Vercel (gratuit)
+
+1. Installez Vercel CLI :
+```bash
+npm install -g vercel
+```
+
+2. Déployez :
+```bash
+vercel
+```
+
+## 🔍 SEO et Performance
+
+Le site est optimisé pour :
+- **SEO** : Métadonnées uniques par page, mots-clés ciblés (vidéaste Lomé, photographe Togo, etc.)
+- **Performance** : Lazy loading, deferred scripts, optimisé pour 3G/4G
+- **Accessibilité** : Navigation clavier, focus visible, WCAG AA, skip-link
+- **Mots-clés ciblés** : vidéaste Lomé, photographe Lomé, monteur vidéo Togo, community manager Lomé, agence de communication Lomé
+
+## 📝 License
+
+Ce projet est la propriété de ALY KKoffi Brice. Tous droits réservés.
+
+## 📧 Contact
+
+Pour toute question ou collaboration, contactez :
+- Email : alykoffibrice00@gmail.com
+- WhatsApp : +228 93 39 53 77
