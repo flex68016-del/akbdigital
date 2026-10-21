@@ -900,13 +900,6 @@
     position: relative;
     padding-left: var(--space-16);
     margin-bottom: var(--space-12);
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.timeline-item.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .timeline-item__dot {
