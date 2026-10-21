@@ -4,6 +4,98 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isPointerCoarse = window.matchMedia('(pointer: coarse)').matches;
+    const isMobile = window.innerWidth <= 768;
+
+    // ========================================
+    // Smooth scroll Lenis synchronisé avec GSAP ScrollTrigger
+    ========================================
+    if (!prefersReducedMotion) {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            smoothWheel: true,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Synchroniser Lenis avec GSAP ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+    }
+
+    // ========================================
+    // Curseur personnalisé (desktop et pointeur précis uniquement)
+    ========================================
+    const customCursor = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.custom-cursor__dot');
+    const cursorCircle = document.querySelector('.custom-cursor__circle');
+
+    if (customCursor && !prefersReducedMotion && !isPointerCoarse && !isMobile) {
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+
+        // Suivi de la souris
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Animation avec lerp (inertie)
+        function animateCursor() {
+            const lerpFactor = 0.15;
+            cursorX += (mouseX - cursorX) * lerpFactor;
+            cursorY += (mouseY - cursorY) * lerpFactor;
+
+            cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+            cursorCircle.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // État hover sur les boutons
+        const buttons = document.querySelectorAll('.btn, a');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                customCursor.classList.add('custom-cursor--hover');
+            });
+            button.addEventListener('mouseleave', () => {
+                customCursor.classList.remove('custom-cursor--hover');
+            });
+        });
+
+        // État view sur les images/vidéos
+        const mediaElements = document.querySelectorAll('img, video');
+        mediaElements.forEach(media => {
+            media.addEventListener('mouseenter', () => {
+                customCursor.classList.add('custom-cursor--view');
+            });
+            media.addEventListener('mouseleave', () => {
+                customCursor.classList.remove('custom-cursor--view');
+            });
+        });
+
+        // Cacher le curseur quand la souris quitte la fenêtre
+        document.addEventListener('mouseleave', () => {
+            customCursor.style.opacity = '0';
+        });
+        document.addEventListener('mouseenter', () => {
+            customCursor.style.opacity = '1';
+        });
+    }
 
     // ========================================
     // Header - Cache au scroll vers le bas
@@ -109,4 +201,29 @@ document.addEventListener('DOMContentLoaded', () => {
             link.classList.remove('header__link--active');
         }
     });
+
+    // ========================================
+    // Transitions entre pages
+    ========================================
+    const pageTransition = document.querySelector('.page-transition');
+    const internalLinks = document.querySelectorAll('a[href^="index.html"], a[href^="a-propos.html"], a[href^="services.html"], a[href^="portfolio.html"], a[href^="experiences.html"], a[href^="akb-communication.html"], a[href^="contact.html"]');
+
+    if (pageTransition && !prefersReducedMotion) {
+        internalLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetUrl = link.getAttribute('href');
+
+                // Animation du rideau
+                gsap.to(pageTransition, {
+                    y: '0%',
+                    duration: 0.8,
+                    ease: 'power4.inOut',
+                    onComplete: () => {
+                        window.location.href = targetUrl;
+                    }
+                });
+            });
+        });
+    }
 });

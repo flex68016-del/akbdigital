@@ -278,3 +278,85 @@
     color: var(--muted);
     font-size: var(--text-sm);
 }
+
+/* ========================================
+   Curseur personnalisé (desktop et pointeur précis uniquement)
+   ======================================== */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    mix-blend-mode: difference;
+}
+
+.custom-cursor__dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--sky);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.custom-cursor__circle {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--sky);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
+}
+
+.custom-cursor--hover .custom-cursor__circle {
+    width: 60px;
+    height: 60px;
+    background: var(--grad-main);
+    border-color: transparent;
+}
+
+.custom-cursor--view .custom-cursor__circle::after {
+    content: 'Voir';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    color: var(--bg);
+    font-weight: 600;
+}
+
+/* Désactiver le curseur personnalisé sur mobile et si prefers-reduced-motion */
+@media (max-width: 768px), (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .custom-cursor {
+        display: none;
+    }
+}
+
+/* ========================================
+   Transition de page (rideau)
+   ========================================
+ */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--grad-main);
+    z-index: 10001;
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+
+.page-transition--active {
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-transition {
+        display: none;
+    }
+}

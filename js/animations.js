@@ -69,4 +69,20 @@ document.addEventListener('DOMContentLoaded', () => {
         // Si prefers-reduced-motion, masquer immédiatement
         gsap.set(loader, { display: 'none' });
     }
+
+    // ========================================
+    // Révélation de la page à l'arrivée (après transition)
+    ========================================
+    const pageTransition = document.querySelector('.page-transition');
+
+    if (pageTransition && !prefersReducedMotion) {
+        // Si la transition est visible (arrivée sur la page), la faire descendre
+        if (pageTransition.style.transform === 'translateY(0%)' || pageTransition.classList.contains('page-transition--active')) {
+            gsap.to(pageTransition, {
+                y: '-100%',
+                duration: 0.8,
+                ease: 'power4.inOut'
+            });
+        }
+    }
 });
