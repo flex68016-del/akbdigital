@@ -1124,6 +1124,19 @@
     .service-item__floating-image {
         display: none;
     }
+    
+    .service-item__content {
+        padding: var(--space-4) 0;
+    }
+    
+    .process-steps {
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+    
+    .process-steps__line {
+        display: none;
+    }
 }
 
 /* Process comment je travaille */
@@ -1352,6 +1365,19 @@
     .portfolio-item--tall {
         grid-column: span 1;
         grid-row: span 1;
+    }
+    
+    .portfolio-filters {
+        overflow-x: auto;
+        white-space: nowrap;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: var(--space-4);
+    }
+    
+    .portfolio-filters button {
+        scroll-snap-align: start;
+        flex-shrink: 0;
     }
 }
 
