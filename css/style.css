@@ -56,6 +56,9 @@
     --text-4xl: clamp(2.5rem, 2rem + 2.5vw, 4rem);
     --text-5xl: clamp(3rem, 2.5rem + 2.5vw, 5rem);
     --text-6xl: clamp(4rem, 3rem + 5vw, 6rem);
+    
+    /* Titres géants mobile (calibré pour 13 lettres dans 320px avec 1.25rem de marge) */
+    --title-xl: clamp(1.6rem, 8.2vw, 4rem);
 
     /* Espacement */
     --space-1: 0.25rem;
@@ -273,6 +276,21 @@ img, video, svg {
 @media (hover: none) or (pointer: coarse) {
     .custom-cursor {
         display: none;
+    }
+}
+
+/* SplitType wrappers - pas de débordement */
+.line,
+.char,
+.word {
+    white-space: normal !important;
+}
+
+@media (max-width: 768px) {
+    .line,
+    .char,
+    .word {
+        white-space: normal !important;
     }
 }
 
@@ -514,10 +532,14 @@ section {
     font-size: var(--text-5xl);
     font-weight: 700;
     color: var(--text);
+    max-width: 100%;
+    overflow-wrap: anywhere;
 }
 
 @media (max-width: 768px) {
     .section-title__text {
-        font-size: clamp(1.75rem, 7vw, var(--text-5xl));
+        font-size: var(--title-xl);
+        letter-spacing: -0.02em;
+        text-wrap: balance;
     }
 }

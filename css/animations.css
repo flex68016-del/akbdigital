@@ -389,12 +389,6 @@
     overflow: hidden;
     z-index: 0;
 }
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
-}
 
 .hero__video {
     width: 100%;
@@ -756,6 +750,17 @@
 .cta-section__title {
     font-size: var(--text-5xl);
     margin-bottom: var(--space-8);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+    .cta-section__title {
+        font-size: var(--title-xl);
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+        margin-bottom: var(--space-4);
+    }
 }
 
 /* ========================================
@@ -1007,13 +1012,24 @@
    Page Services
    ======================================== */
 .services-hero {
-    padding: var(--space-32) 0;
+    padding: clamp(6rem, 18vw, 9rem) 0 var(--space-8) 0;
     text-align: center;
 }
 
 .services-hero__title {
     font-size: var(--text-6xl);
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-8);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+    .services-hero__title {
+        font-size: var(--title-xl);
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+        margin-bottom: var(--space-4);
+    }
 }
 
 /* Services list interactive */
@@ -1216,13 +1232,24 @@
    Page Portfolio
    ======================================== */
 .portfolio-hero {
-    padding: var(--space-32) 0;
+    padding: clamp(6rem, 18vw, 9rem) 0 var(--space-8) 0;
     text-align: center;
 }
 
 .portfolio-hero__title {
     font-size: var(--text-6xl);
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-8);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+    .portfolio-hero__title {
+        font-size: var(--title-xl);
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+        margin-bottom: var(--space-4);
+    }
 }
 
 /* Filtres */
@@ -1256,6 +1283,29 @@
     background: var(--grad-main);
     color: var(--bg);
     border-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .portfolio-filters {
+        overflow-x: auto;
+        white-space: nowrap;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: var(--space-4);
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        scrollbar-width: none;
+    }
+    
+    .portfolio-filters::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .portfolio-filter {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        min-height: 44px;
+    }
 }
 
 /* Grille masonry */
@@ -1529,13 +1579,24 @@
    Page Experiences
    ======================================== */
 .experiences-hero {
-    padding: var(--space-32) 0;
+    padding: clamp(6rem, 18vw, 9rem) 0 var(--space-8) 0;
     text-align: center;
 }
 
 .experiences-hero__title {
     font-size: var(--text-6xl);
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-8);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+    .experiences-hero__title {
+        font-size: var(--title-xl);
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+        margin-bottom: var(--space-4);
+    }
 }
 
 .experiences-counter {
@@ -1702,7 +1763,7 @@
    Page AKB Communication
    ======================================== */
 .agency-hero {
-    padding: var(--space-32) 0;
+    padding: clamp(6rem, 18vw, 9rem) 0 var(--space-8) 0;
     text-align: center;
 }
 
@@ -1719,12 +1780,32 @@
 .agency-hero__title {
     font-size: var(--text-6xl);
     margin-bottom: var(--space-6);
+    max-width: 100%;
+    overflow-wrap: anywhere;
 }
 
 .agency-hero__subtitle {
     font-size: var(--text-2xl);
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-8);
 }
+
+@media (max-width: 768px) {
+    .agency-hero {
+        min-height: auto;
+        padding-bottom: var(--space-12);
+    }
+    
+    .agency-hero__title {
+        font-size: var(--title-xl);
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+        margin-bottom: var(--space-4);
+    }
+
+    .agency-hero__subtitle {
+        font-size: var(--text-xl);
+        margin-bottom: var(--space-6);
+    }
 
 .agency-presentation {
     padding: var(--space-32) 0;
@@ -1944,14 +2025,6 @@
 }
 
 @media (max-width: 768px) {
-    .agency-hero__title {
-        font-size: clamp(2.2rem, 11vw, var(--text-6xl));
-    }
-    
-    .agency-hero__subtitle {
-        font-size: var(--text-xl);
-    }
-    
     .agency-services-3d__grid {
         grid-template-columns: 1fr;
         gap: var(--space-4);
@@ -2005,19 +2078,33 @@
    Page Contact
    ======================================== */
 .contact-hero {
-    padding: var(--space-32) 0;
+    padding: clamp(6rem, 18vw, 9rem) 0 var(--space-8) 0;
     text-align: center;
 }
 
 .contact-hero__title {
     font-size: var(--text-6xl);
     margin-bottom: var(--space-4);
+    max-width: 100%;
+    overflow-wrap: anywhere;
 }
 
 .contact-hero__subtitle {
     font-size: var(--text-2xl);
     color: var(--sky);
 }
+
+@media (max-width: 768px) {
+    .contact-hero__title {
+        font-size: var(--title-xl);
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+        margin-bottom: var(--space-4);
+    }
+
+    .contact-hero__subtitle {
+        font-size: var(--text-xl);
+    }
 
 .contact-layout {
     padding: var(--space-32) 0;
