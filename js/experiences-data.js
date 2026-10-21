@@ -12,9 +12,9 @@ const experiencesData = [
         date: "[DATE À VÉRIFIER]",
         credits: "[CRÉDITS À VÉRIFIER]",
         gallery: [
-            "assets/images/portfolio-1-placeholder.jpg",
-            "assets/images/portfolio-2-placeholder.jpg",
-            "assets/images/portfolio-3-placeholder.jpg"
+            "assets/images/placeholder-4-3.svg",
+            "assets/images/placeholder-1-1.svg",
+            "assets/images/placeholder-16-9.svg"
         ]
     }
 ];

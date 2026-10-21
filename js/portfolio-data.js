@@ -8,7 +8,7 @@ const portfolioData = [
         title: "Projet vidéo 1",
         categories: ["video", "evenements"],
         type: "video",
-        thumbnail: "assets/images/portfolio-1-placeholder.jpg",
+        thumbnail: "assets/images/placeholder-16-9.svg",
         src: "assets/videos/project-1.mp4",
         client: "[Client à vérifier]"
     },
@@ -17,7 +17,7 @@ const portfolioData = [
         title: "Shooting marque 1",
         categories: ["photo", "marques"],
         type: "photo",
-        thumbnail: "assets/images/portfolio-2-placeholder.jpg",
+        thumbnail: "assets/images/placeholder-4-3.svg",
         src: "assets/images/portfolio-2-full.jpg",
         client: "[Client à vérifier]"
     },
@@ -26,7 +26,7 @@ const portfolioData = [
         title: "Contenu réseaux sociaux",
         categories: ["video", "reseaux"],
         type: "video",
-        thumbnail: "assets/images/portfolio-3-placeholder.jpg",
+        thumbnail: "assets/images/placeholder-16-9.svg",
         src: "assets/videos/project-3.mp4",
         client: "[Client à vérifier]"
     },
@@ -35,7 +35,7 @@ const portfolioData = [
         title: "Portrait artiste",
         categories: ["photo", "portraits"],
         type: "photo",
-        thumbnail: "assets/images/portfolio-4-placeholder.jpg",
+        thumbnail: "assets/images/placeholder-1-1.svg",
         src: "assets/images/portfolio-4-full.jpg",
         client: "[Client à vérifier]"
     },
@@ -44,7 +44,7 @@ const portfolioData = [
         title: "Reportage événement",
         categories: ["video", "evenements"],
         type: "video",
-        thumbnail: "assets/images/portfolio-5-placeholder.jpg",
+        thumbnail: "assets/images/placeholder-16-9.svg",
         src: "assets/videos/project-5.mp4",
         client: "[Client à vérifier]"
     },
@@ -53,7 +53,7 @@ const portfolioData = [
         title: "Campagne publicitaire",
         categories: ["photo", "marques"],
         type: "photo",
-        thumbnail: "assets/images/portfolio-6-placeholder.jpg",
+        thumbnail: "assets/images/placeholder-4-3.svg",
         src: "assets/images/portfolio-6-full.jpg",
         client: "[Client à vérifier]"
     },
@@ -62,7 +62,7 @@ const portfolioData = [
         title: "Clip musical",
         categories: ["video", "marques"],
         type: "video",
-        thumbnail: "assets/images/portfolio-1-placeholder.jpg",
+        thumbnail: "assets/images/placeholder-16-9.svg",
         src: "assets/videos/project-7.mp4",
         client: "[Client à vérifier]"
     },
@@ -71,7 +71,7 @@ const portfolioData = [
         title: "Corporate brand",
         categories: ["photo", "marques"],
         type: "photo",
-        thumbnail: "assets/images/portfolio-2-placeholder.jpg",
+        thumbnail: "assets/images/placeholder-4-3.svg",
         src: "assets/images/portfolio-8-full.jpg",
         client: "[Client à vérifier]"
     },
@@ -80,7 +80,7 @@ const portfolioData = [
         title: "Storytelling vidéo",
         categories: ["video", "reseaux"],
         type: "video",
-        thumbnail: "assets/images/portfolio-3-placeholder.jpg",
+        thumbnail: "assets/images/placeholder-16-9.svg",
         src: "assets/videos/project-9.mp4",
         client: "[Client à vérifier]"
     },
@@ -89,7 +89,7 @@ const portfolioData = [
         title: "Événement sportif",
         categories: ["photo", "evenements"],
         type: "photo",
-        thumbnail: "assets/images/portfolio-4-placeholder.jpg",
+        thumbnail: "assets/images/placeholder-4-3.svg",
         src: "assets/images/portfolio-10-full.jpg",
         client: "[Client à vérifier]"
     },
@@ -98,7 +98,7 @@ const portfolioData = [
         title: "TVC publicitaire",
         categories: ["video", "marques"],
         type: "video",
-        thumbnail: "assets/images/portfolio-5-placeholder.jpg",
+        thumbnail: "assets/images/placeholder-16-9.svg",
         src: "assets/videos/project-11.mp4",
         client: "[Client à vérifier]"
     },
@@ -107,7 +107,7 @@ const portfolioData = [
         title: "Série portraits",
         categories: ["photo", "portraits"],
         type: "photo",
-        thumbnail: "assets/images/portfolio-6-placeholder.jpg",
+        thumbnail: "assets/images/placeholder-1-1.svg",
         src: "assets/images/portfolio-12-full.jpg",
         client: "[Client à vérifier]"
     }

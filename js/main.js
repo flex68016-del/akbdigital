@@ -120,6 +120,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
+    // Fallback pour images cassées
+    // ========================================
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', function() {
+            this.src = 'assets/images/placeholder-4-3.svg';
+            this.classList.add('is-fallback');
+        });
+    });
+
+    // ========================================
     // Menu mobile
    // ========================================
     const headerToggle = document.querySelector('.header__toggle');

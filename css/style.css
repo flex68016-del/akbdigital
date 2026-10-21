@@ -294,6 +294,11 @@ img, video, svg {
     }
 }
 
+/* Fallback images */
+img.is-fallback {
+    background: linear-gradient(135deg, #050B1A 0%, #1E6BFF 100%);
+}
+
 section {
     padding-top: calc(var(--header-h) + 2rem + env(safe-area-inset-top));
     padding-bottom: 4rem env(safe-area-inset-bottom);
