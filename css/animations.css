@@ -466,10 +466,11 @@
 }
 
 .hero__title-gradient {
-    background: var(--grad-main);
+    background: linear-gradient(135deg, #A8DEFF 0%, #4DB8FF 50%, #A8DEFF 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: var(--sky-light); /* Fallback plus clair */
 }
 
 .hero__subtitle {
