@@ -597,14 +597,20 @@
 
 .marquee__text {
     font-family: var(--font-display);
-    font-size: var(--text-4xl);
+    font-size: clamp(1.5rem, 6vw, var(--text-4xl));
     font-weight: 700;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--sky);
-    background: linear-gradient(to bottom, transparent 50%, var(--sky) 50%);
-    -webkit-background-clip: text;
-    background-clip: text;
+    color: var(--sky);
     margin-right: var(--space-16);
+}
+
+@media (max-width: 768px) {
+    .marquee {
+        padding: var(--space-4) 0;
+    }
+    
+    .marquee__text {
+        margin-right: var(--space-8);
+    }
 }
 
 @keyframes marquee {
@@ -655,6 +661,12 @@
 @media (max-width: 768px) {
     .services-preview__grid {
         grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+    
+    .featured-projects__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
     }
 }
 
@@ -964,10 +976,22 @@
 @media (max-width: 768px) {
     .about-presentation__grid {
         grid-template-columns: 1fr;
+        gap: var(--space-8);
+    }
+    
+    .about-presentation__portrait {
+        order: -1;
+        max-width: 300px;
+        margin: 0 auto;
     }
 
     .about-skills__grid {
         grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+    
+    .about-timeline__container {
+        padding-left: var(--space-4);
     }
 }
 
