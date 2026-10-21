@@ -225,4 +225,115 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ========================================
+    // Animations de la page À propos
+    ========================================
+
+    // Animation du titre À propos
+    const aboutTitle = document.querySelector('.about-hero__title');
+    if (aboutTitle && !prefersReducedMotion) {
+        const splitTitle = new SplitType(aboutTitle, { types: 'chars' });
+
+        gsap.from(splitTitle.chars, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.05,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    }
+
+    // Révélation mot par mot du texte de présentation au scroll
+    const aboutText = document.getElementById('about-text');
+    if (aboutText && !prefersReducedMotion) {
+        const words = aboutText.textContent.split(' ');
+        aboutText.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(' ');
+
+        const wordElements = aboutText.querySelectorAll('.word');
+
+        gsap.from(wordElements, {
+            opacity: 0,
+            stagger: 0.02,
+            duration: 0.5,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.about-presentation',
+                start: 'top 70%',
+                onEnter: () => {
+                    wordElements.forEach(word => word.classList.add('visible'));
+                }
+            }
+        });
+    }
+
+    // Parallaxe légère du portrait
+    const portrait = document.querySelector('.about-presentation__portrait');
+    if (portrait && !prefersReducedMotion) {
+        gsap.to(portrait, {
+            yPercent: 10,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.about-presentation',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+    }
+
+    // Animation des items de compétences en cascade
+    const skillLists = document.querySelectorAll('.skill-card__list');
+    if (skillLists.length > 0 && !prefersReducedMotion) {
+        skillLists.forEach(list => {
+            const items = list.querySelectorAll('li');
+            gsap.to(items, {
+                opacity: 1,
+                x: 0,
+                stagger: 0.1,
+                duration: 0.5,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: list,
+                    start: 'top 80%',
+                    onEnter: () => {
+                        items.forEach(item => item.classList.add('visible'));
+                    }
+                }
+            });
+        });
+    }
+
+    // Timeline : la ligne se dessine au scroll, les items apparaissent
+    const timelineLineProgress = document.querySelector('.about-timeline__line-progress');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    if (timelineLineProgress && timelineItems.length > 0 && !prefersReducedMotion) {
+        gsap.to(timelineLineProgress, {
+            height: '100%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.about-timeline',
+                start: 'top center',
+                end: 'bottom center',
+                scrub: true
+            }
+        });
+
+        timelineItems.forEach((item, index) => {
+            gsap.to(item, {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        item.classList.add('visible');
+                    }
+                }
+            });
+        });
+    }
 });
