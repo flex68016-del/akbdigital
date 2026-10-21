@@ -466,11 +466,11 @@
 }
 
 .hero__title-gradient {
-    background: linear-gradient(135deg, #A8DEFF 0%, #4DB8FF 50%, #A8DEFF 100%);
+    color: var(--sky-light); /* Couleur unie claire pour meilleure visibilite */
+    background: linear-gradient(135deg, #A8DEFF 0%, #FFFFFF 50%, #A8DEFF 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: var(--sky-light); /* Fallback plus clair */
 }
 
 .hero__subtitle {
