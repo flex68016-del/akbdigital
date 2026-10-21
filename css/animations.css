@@ -1749,7 +1749,7 @@
 }
 
 .agency-target--gradient .agency-target__item {
-    color: #050B1A;
+    color: var(--text);
     border-color: rgba(5, 11, 26, 0.2);
 }
 
