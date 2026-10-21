@@ -75,7 +75,67 @@
         <a href="contact.html" class="mobile-menu__link">Contact</a>
     </div>
 
-    <!-- Contenu à venir -->
+    <!-- Hero Portfolio -->
+    <section class="portfolio-hero">
+        <div class="container">
+            <h1 class="portfolio-hero__title" data-text-reveal>RÉALISATIONS</h1>
+        </div>
+    </section>
+
+    <!-- Filtres -->
+    <div class="container">
+        <div class="portfolio-filters">
+            <button class="portfolio-filter portfolio-filter--active" data-filter="all">Tout</button>
+            <button class="portfolio-filter" data-filter="photo">Photo</button>
+            <button class="portfolio-filter" data-filter="video">Vidéo</button>
+            <button class="portfolio-filter" data-filter="evenements">Événements</button>
+            <button class="portfolio-filter" data-filter="marques">Marques</button>
+            <button class="portfolio-filter" data-filter="reseaux">Réseaux sociaux</button>
+        </div>
+    </div>
+
+    <!-- Grille Portfolio -->
+    <section class="portfolio-grid" id="portfolio-grid">
+        <!-- Les items seront générés dynamiquement via JS -->
+    </section>
+
+    <!-- Collaborations -->
+    <section class="collaborations">
+        <div class="container">
+            <h2 class="collaborations__title">Collaborations principales</h2>
+            <div class="collaborations__list">
+                <span class="collaborations__item">Midzo Tech (Mayo App)</span>
+                <span class="collaborations__item">Le Roi Lapin</span>
+                <span class="collaborations__item">Démarcation artisanale</span>
+                <span class="collaborations__item">Dunenyo Zan</span>
+                <span class="collaborations__item">ADN</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-section__content">
+                <h2 class="cta-section__title">Vous avez un projet en tête ?</h2>
+                <a href="contact.html" class="btn btn--primary">Me contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-hidden="true">
+        <button class="lightbox__close" aria-label="Fermer">×</button>
+        <button class="lightbox__nav lightbox__nav--prev" aria-label="Précédent">←</button>
+        <button class="lightbox__nav lightbox__nav--next" aria-label="Suivant">→</button>
+        <div class="lightbox__content">
+            <div id="lightbox-media-container"></div>
+            <div class="lightbox__caption">
+                <h3 class="lightbox__title" id="lightbox-title"></h3>
+                <p class="lightbox__client" id="lightbox-client"></p>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -123,6 +183,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js" defer></script>
     <script src="https://unpkg.com/split-type" defer></script>
+    <script src="js/portfolio-data.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/animations.js" defer></script>
 </body>

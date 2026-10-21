@@ -336,4 +336,37 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // ========================================
+    // Animations de la page Services
+    ========================================
+
+    // Animation du titre Services
+    const servicesTitle = document.querySelector('.services-hero__title');
+    if (servicesTitle && !prefersReducedMotion) {
+        const splitTitle = new SplitType(servicesTitle, { types: 'chars' });
+
+        gsap.from(splitTitle.chars, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.05,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    }
+
+    // Animation de la ligne de progression du process
+    const processLineProgress = document.querySelector('.process-steps__line-progress');
+    if (processLineProgress && !prefersReducedMotion) {
+        gsap.to(processLineProgress, {
+            height: '100%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.process-steps',
+                start: 'top center',
+                end: 'bottom center',
+                scrub: true
+            }
+        });
+    }
 });

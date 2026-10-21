@@ -226,4 +226,281 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // ========================================
+    // Services list interactive
+    ========================================
+    const serviceItems = document.querySelectorAll('.service-item');
+    const floatingImage = document.querySelector('.service-item__floating-image');
+
+    if (serviceItems.length > 0) {
+        // Desktop : hover reveal
+        if (!isMobile) {
+            serviceItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.classList.add('service-item--active');
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    item.classList.remove('service-item--active');
+                });
+
+                // Image flottante qui suit le curseur
+                item.addEventListener('mousemove', (e) => {
+                    if (floatingImage) {
+                        gsap.to(floatingImage, {
+                            x: e.clientX + 20,
+                            y: e.clientY + 20,
+                            duration: 0.3,
+                            ease: 'power2.out'
+                        });
+                    }
+                });
+            });
+        } else {
+            // Mobile : accordéon au clic
+            serviceItems.forEach(item => {
+                const header = item.querySelector('.service-item__header');
+                const content = item.querySelector('.service-item__content');
+
+                header.addEventListener('click', () => {
+                    const isActive = item.classList.contains('service-item--active');
+
+                    // Fermer tous les autres
+                    serviceItems.forEach(otherItem => {
+                        otherItem.classList.remove('service-item--active');
+                        otherItem.setAttribute('aria-expanded', 'false');
+                    });
+
+                    // Ouvrir celui-ci si pas déjà actif
+                    if (!isActive) {
+                        item.classList.add('service-item--active');
+                        item.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+        }
+    }
+
+    // ========================================
+    // Portfolio : Génération de la grille et filtres
+    ========================================
+    const portfolioGrid = document.getElementById('portfolio-grid');
+    const portfolioFilters = document.querySelectorAll('.portfolio-filter');
+
+    if (portfolioGrid && typeof portfolioData !== 'undefined') {
+        // Générer les items du portfolio
+        function renderPortfolio(filter = 'all') {
+            portfolioGrid.innerHTML = '';
+
+            const filteredData = filter === 'all'
+                ? portfolioData
+                : portfolioData.filter(item => item.categories.includes(filter));
+
+            filteredData.forEach((item, index) => {
+                const itemClass = item.type === 'video' ? 'portfolio-item--video' : '';
+                const sizeClass = index % 5 === 0 ? 'portfolio-item--large' : index % 3 === 0 ? 'portfolio-item--wide' : '';
+
+                const itemEl = document.createElement('div');
+                itemEl.className = `portfolio-item ${sizeClass} ${itemClass}`;
+                itemEl.dataset.id = item.id;
+
+                if (item.type === 'video') {
+                    itemEl.innerHTML = `
+                        <img src="${item.thumbnail}" alt="${item.title}" class="portfolio-item__media" loading="lazy" width="400" height="300">
+                        <div class="portfolio-item__video-indicator">▶</div>
+                        <div class="portfolio-item__overlay">
+                            <p class="portfolio-item__category">Vidéo</p>
+                            <h3 class="portfolio-item__title">${item.title}</h3>
+                            <p class="portfolio-item__client">${item.client}</p>
+                        </div>
+                    `;
+                } else {
+                    itemEl.innerHTML = `
+                        <img src="${item.thumbnail}" alt="${item.title}" class="portfolio-item__media" loading="lazy" width="400" height="300">
+                        <div class="portfolio-item__overlay">
+                            <p class="portfolio-item__category">Photo</p>
+                            <h3 class="portfolio-item__title">${item.title}</h3>
+                            <p class="portfolio-item__client">${item.client}</p>
+                        </div>
+                    `;
+                }
+
+                portfolioGrid.appendChild(itemEl);
+            });
+
+            // Animation d'apparition en cascade
+            if (!prefersReducedMotion) {
+                gsap.from('.portfolio-item', {
+                    opacity: 0,
+                    scale: 0.9,
+                    stagger: 0.1,
+                    duration: 0.6,
+                    ease: 'power3.out'
+                });
+            }
+        }
+
+        // Render initial
+        renderPortfolio();
+
+        // Gestion des filtres
+        portfolioFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                // Mettre à jour les boutons
+                portfolioFilters.forEach(f => f.classList.remove('portfolio-filter--active'));
+                filter.classList.add('portfolio-filter--active');
+
+                // Filtrer et réorganiser
+                const filterValue = filter.dataset.filter;
+
+                if (!prefersReducedMotion) {
+                    // Animation Flip pour réorganisation fluide
+                    const state = Flip.getState('.portfolio-item');
+                    renderPortfolio(filterValue);
+                    Flip.from(state, {
+                        duration: 0.6,
+                        ease: 'power3.out',
+                        absolute: true,
+                        onEnter: elements => gsap.from(elements, { opacity: 0, scale: 0.9, duration: 0.4 }),
+                        onLeave: elements => gsap.to(elements, { opacity: 0, scale: 0.9, duration: 0.4 })
+                    });
+                } else {
+                    renderPortfolio(filterValue);
+                }
+            });
+        });
+    }
+
+    // ========================================
+    // Lightbox
+    ========================================
+    const lightbox = document.getElementById('lightbox');
+    const lightboxMediaContainer = document.getElementById('lightbox-media-container');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxClient = document.getElementById('lightbox-client');
+    const lightboxClose = document.querySelector('.lightbox__close');
+    const lightboxPrev = document.querySelector('.lightbox__nav--prev');
+    const lightboxNext = document.querySelector('.lightbox__nav--next');
+
+    let currentLightboxIndex = 0;
+    let currentLightboxData = [];
+
+    function openLightbox(item) {
+        currentLightboxIndex = portfolioData.findIndex(p => p.id === item.id);
+        currentLightboxData = portfolioData;
+
+        lightboxTitle.textContent = item.title;
+        lightboxClient.textContent = item.client;
+
+        if (item.type === 'video') {
+            lightboxMediaContainer.innerHTML = `
+                <video src="${item.src}" class="lightbox__media" controls autoplay muted loop></video>
+            `;
+        } else {
+            lightboxMediaContainer.innerHTML = `
+                <img src="${item.src}" alt="${item.title}" class="lightbox__media">
+            `;
+        }
+
+        lightbox.classList.add('lightbox--active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        // Sauvegarder l'élément focus
+        lightbox.dataset.focusReturn = document.activeElement?.outerHTML || '';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('lightbox--active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+
+        // Arrêter la vidéo si présente
+        const video = lightboxMediaContainer.querySelector('video');
+        if (video) {
+            video.pause();
+        }
+
+        // Retourner le focus
+        setTimeout(() => {
+            const focusedElement = document.querySelector('.portfolio-item[data-id="' + portfolioData[currentLightboxIndex].id + '"]');
+            if (focusedElement) {
+                focusedElement.focus();
+            }
+        }, 100);
+    }
+
+    function navigateLightbox(direction) {
+        if (direction === 'next') {
+            currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxData.length;
+        } else {
+            currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxData.length) % currentLightboxData.length;
+        }
+
+        const item = currentLightboxData[currentLightboxIndex];
+        openLightbox(item);
+    }
+
+    // Event listeners pour la lightbox
+    if (lightbox && lightboxMediaContainer) {
+        // Ouverture au clic sur un item portfolio
+        document.addEventListener('click', (e) => {
+            const portfolioItem = e.target.closest('.portfolio-item');
+            if (portfolioItem) {
+                const itemId = parseInt(portfolioItem.dataset.id);
+                const item = portfolioData.find(p => p.id === itemId);
+                if (item) {
+                    e.preventDefault();
+                    openLightbox(item);
+                }
+            }
+        });
+
+        // Fermeture
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        // Navigation
+        lightboxPrev.addEventListener('click', () => navigateLightbox('prev'));
+        lightboxNext.addEventListener('click', () => navigateLightbox('next'));
+
+        // Clavier
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('lightbox--active')) return;
+
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                navigateLightbox('prev');
+            } else if (e.key === 'ArrowRight') {
+                navigateLightbox('next');
+            }
+        });
+
+        // Clic en dehors du contenu
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Swipe mobile (basic)
+        let touchStartX = 0;
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        lightbox.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    navigateLightbox('next');
+                } else {
+                    navigateLightbox('prev');
+                }
+            }
+        });
+    }
 });
