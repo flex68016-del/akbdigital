@@ -380,6 +380,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     // Refresh au resize
     // ========================================
+    // Refresh ScrollTrigger après chargement
+    // ========================================
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
@@ -387,6 +389,20 @@ document.addEventListener('DOMContentLoaded', () => {
             ScrollTrigger.refresh();
         }, 250);
     });
+    
+    // Refresh après changement d'orientation (mobile)
+    window.addEventListener('orientationchange', () => {
+        setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 250);
+    });
+    
+    // Refresh après chargement des images
+    if (document.readyState === 'loading') {
+        window.addEventListener('load', () => {
+            ScrollTrigger.refresh();
+        });
+    }
 });
 
 // Animation lightbox d'ouverture depuis miniature

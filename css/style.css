@@ -264,7 +264,13 @@ img, video, svg {
 /* ========================================
    Responsive global
    ======================================== */
-@media (hover: none) and (pointer: coarse) {
+@media (hover: hover) and (pointer: fine) {
+    .custom-cursor {
+        display: block;
+    }
+}
+
+@media (hover: none) or (pointer: coarse) {
     .custom-cursor {
         display: none;
     }
