@@ -1,5 +1,5 @@
 /* ========================================
-   Portfolio AKB - Animations GSAP
+   Portfolio AKB - Animations GSAP Centralisees
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -7,14 +7,215 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger, Flip, SplitType);
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isPointerCoarse = window.matchMedia('(pointer: coarse)').matches;
 
     // ========================================
+    // Fonctions d'animation reutilisables
+    // ========================================
+
+    /**
+     * Titre revele ligne par ligne avec SplitType
+     * @param {HTMLElement} element - Element a animer
+     * @param {Object} options - Options GSAP
+     */
+    function revealText(element, options = {}) {
+        if (!element || prefersReducedMotion) return;
+
+        const defaults = {
+            type: 'chars',
+            y: 50,
+            opacity: 0,
+            stagger: 0.05,
+            duration: 0.8,
+            ease: 'power3.out',
+            delay: 0
+        };
+
+        const config = { ...defaults, ...options };
+        const split = new SplitType(element, { types: config.type });
+
+        gsap.from(split[config.type === 'lines' ? 'lines' : 'chars'], {
+            y: config.y,
+            opacity: config.opacity,
+            stagger: config.stagger,
+            duration: config.duration,
+            ease: config.ease,
+            delay: config.delay
+        });
+    }
+
+    /**
+     * Apparition en montee avec stagger
+     * @param {HTMLElement|NodeList} elements - Elements a animer
+     * @param {Object} options - Options GSAP
+     */
+    function fadeUp(elements, options = {}) {
+        if (!elements || prefersReducedMotion) return;
+
+        const nodeList = elements instanceof NodeList ? elements : [elements];
+        if (nodeList.length === 0) return;
+
+        const defaults = {
+            y: 50,
+            opacity: 0,
+            stagger: 0.15,
+            duration: 0.6,
+            ease: 'power3.out',
+            scrollTrigger: null
+        };
+
+        const config = { ...defaults, ...options };
+
+        gsap.from(nodeList, {
+            y: config.y,
+            opacity: config.opacity,
+            stagger: config.stagger,
+            duration: config.duration,
+            ease: config.ease,
+            scrollTrigger: config.scrollTrigger
+        });
+    }
+
+    /**
+     * Revelation d'image par clip-path + scale
+     * @param {HTMLElement} element - Image a animer
+     * @param {Object} options - Options GSAP
+     */
+    function imageReveal(element, options = {}) {
+        if (!element || prefersReducedMotion) return;
+
+        const defaults = {
+            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+            scale: 1,
+            duration: 1,
+            ease: 'power3.out'
+        };
+
+        const config = { ...defaults, ...options };
+
+        gsap.fromTo(element,
+            { clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)', scale: 1.1 },
+            {
+                clipPath: config.clipPath,
+                scale: config.scale,
+                duration: config.duration,
+                ease: config.ease,
+                scrollTrigger: config.scrollTrigger
+            }
+        );
+    }
+
+    /**
+     * Parallaxe sur les elements avec data-speed
+     */
+    function parallax() {
+        if (prefersReducedMotion) return;
+
+        const parallaxElements = document.querySelectorAll('[data-speed]');
+        
+        parallaxElements.forEach(element => {
+            const speed = parseFloat(element.getAttribute('data-speed')) || 0.5;
+            
+            gsap.to(element, {
+                yPercent: speed * 50,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+        });
+    }
+
+    /**
+     * Boutons magnetiques (desktop uniquement)
+     */
+    function magneticButton() {
+        if (prefersReducedMotion || isPointerCoarse) return;
+
+        const buttons = document.querySelectorAll('[data-magnetic]');
+        
+        buttons.forEach(button => {
+            button.addEventListener('mousemove', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                gsap.to(button, {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+
+            button.addEventListener('mouseleave', () => {
+                gsap.to(button, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
+                    ease: 'power2.out'
+                });
+            });
+        });
+    }
+
+    /**
+     * Compteurs animes
+     */
+    function counterUp() {
+        if (prefersReducedMotion) return;
+
+        const counters = document.querySelectorAll('[data-counter]');
+        
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-counter'), 10);
+            
+            ScrollTrigger.create({
+                trigger: counter,
+                start: 'top 80%',
+                onEnter: () => {
+                    gsap.to(counter, {
+                        textContent: target,
+                        duration: 2,
+                        ease: 'power2.out',
+                        snap: { textContent: 1 }
+                    });
+                }
+            });
+        });
+    }
+
+    /**
+     * Bandeaux reactifs a la vitesse du scroll
+     */
+    function horizontalMarquee() {
+        if (prefersReducedMotion) return;
+
+        const marquees = document.querySelectorAll('[data-marquee]');
+        
+        marquees.forEach(marquee => {
+            const track = marquee.querySelector('.marquee__track');
+            if (!track) return;
+
+            let xTo = gsap.quickTo(track, 'x', { duration: 0.5, ease: 'power3' });
+            
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                xTo(scrollY * -0.5);
+            });
+        });
+    }
+
+    // ========================================
+    // Animation elements specifiques (pas generiques)
+    // ========================================
+
     // Loader d'introduction (une fois par session)
-    // ========================================
     const loader = document.querySelector('.loader');
-
     if (loader && !prefersReducedMotion) {
-        // Verifier si le loader a deja ete joue cette session
         const hasLoaderPlayed = sessionStorage.getItem('loaderPlayed');
 
         if (!hasLoaderPlayed) {
@@ -28,7 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Animation des lettres du logo
             tl.from(logoChars, {
                 opacity: 0,
                 y: 100,
@@ -36,13 +236,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 0.8,
                 ease: 'power3.out'
             })
-            // Animation de la barre de progression
             .to(bar, {
                 width: '100%',
                 duration: 2,
                 ease: 'power2.inOut'
             }, '-=0.5')
-            // Animation du compteur (timecode style)
             .to({}, {
                 duration: 2,
                 onUpdate: function() {
@@ -54,7 +252,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     counter.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(frames).padStart(2, '0')}`;
                 }
             }, '-=2')
-            // Sortie du loader en rideau
             .to(loader, {
                 clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
                 duration: 0.8,
@@ -62,21 +259,15 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .set(loader, { display: 'none' });
         } else {
-            // Si deja joue, masquer immediatement
             gsap.set(loader, { display: 'none' });
         }
     } else if (loader) {
-        // Si prefers-reduced-motion, masquer immediatement
         gsap.set(loader, { display: 'none' });
     }
 
-    // ========================================
-    // Revelation de la page a l'arrivee (apres transition)
-    // ========================================
+    // Revelation de la page a l'arrivee
     const pageTransition = document.querySelector('.page-transition');
-
     if (pageTransition && !prefersReducedMotion) {
-        // Si la transition est visible (arrivee sur la page), la faire descendre
         if (pageTransition.style.transform === 'translateY(0%)' || pageTransition.classList.contains('page-transition--active')) {
             gsap.to(pageTransition, {
                 y: '-100%',
@@ -86,36 +277,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ========================================
-    // Animations de la page d'accueil
-    //========================================
-    const heroTitle = document.querySelector('.hero__title');
-    const heroSubtitle = document.getElementById('hero-subtitle');
+    // Timecode hero (temps reel)
     const heroTimecode = document.querySelector('.hero__timecode');
-    const heroVideo = document.querySelector('.hero__video');
-    const heroGlow = document.querySelector('.hero__glow');
-
-    // Animation du titre hero (SplitType)
-    if (heroTitle && !prefersReducedMotion) {
-        const splitTitle = new SplitType(heroTitle, { types: 'lines' });
-
-        gsap.from(splitTitle.lines, {
-            y: 100,
-            opacity: 0,
-            stagger: 0.15,
-            duration: 1,
-            ease: 'power3.out',
-            delay: 0.5
-        });
+    if (heroTimecode) {
+        function updateTimecode() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            heroTimecode.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        updateTimecode();
+        setInterval(updateTimecode, 1000);
     }
 
-    // Animation du sous-titre qui alterne
+    // Sous-titre hero qui alterne
+    const heroSubtitle = document.getElementById('hero-subtitle');
     if (heroSubtitle && !prefersReducedMotion) {
         const subtitles = ['Videaste', 'Photographe', 'Monteur video', 'Community Manager'];
         let currentIndex = 0;
 
         function rotateSubtitle() {
-            // Sortie
             gsap.to(heroSubtitle, {
                 opacity: 0,
                 y: -20,
@@ -124,7 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 onComplete: () => {
                     currentIndex = (currentIndex + 1) % subtitles.length;
                     heroSubtitle.textContent = subtitles[currentIndex];
-                    // Entree
                     gsap.to(heroSubtitle, {
                         opacity: 1,
                         y: 0,
@@ -134,55 +315,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-
         setInterval(rotateSubtitle, 3000);
     }
 
-    // Timecode qui avance en temps reel
-    if (heroTimecode) {
-        function updateTimecode() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            heroTimecode.textContent = `${hours}:${minutes}:${seconds}`;
-        }
-
-        updateTimecode();
-        setInterval(updateTimecode, 1000);
-    }
-
-    // Parallaxe de la video selon la souris et le scroll
-    if (heroVideo && !prefersReducedMotion) {
-        let mouseX = 0;
-        let mouseY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
-            mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
-        });
-
-        gsap.to(heroVideo, {
-            x: mouseX,
-            y: mouseY,
-            duration: 1,
-            ease: 'power2.out'
-        });
-
-        // Parallaxe au scroll
-        gsap.to(heroVideo, {
-            yPercent: 20,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true
-            }
-        });
-    }
-
-    // Animation du halo glow
+    // Halo glow animation
+    const heroGlow = document.querySelector('.hero__glow');
     if (heroGlow && !prefersReducedMotion) {
         gsap.to(heroGlow, {
             y: '20%',
@@ -194,295 +331,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animation des cartes de service en cascade
-    const serviceCards = document.querySelectorAll('.service-card');
-    if (serviceCards.length > 0 && !prefersReducedMotion) {
-        gsap.from(serviceCards, {
-            opacity: 0,
-            y: 50,
-            stagger: 0.2,
-            duration: 0.8,
-            ease: 'power3.out',
+    // ========================================
+    // Declenchement via attributs data-animate
+    // ========================================
+
+    // Titres avec revealText
+    document.querySelectorAll('[data-animate="reveal-text"]').forEach(element => {
+        const delay = parseFloat(element.getAttribute('data-delay')) || 0;
+        revealText(element, { delay });
+    });
+
+    // Elements avec fadeUp
+    document.querySelectorAll('[data-animate="fade-up"]').forEach(element => {
+        const stagger = parseFloat(element.getAttribute('data-stagger')) || 0.15;
+        const trigger = element.getAttribute('data-trigger') || element;
+        
+        fadeUp(element, {
+            stagger,
             scrollTrigger: {
-                trigger: '.services-preview',
+                trigger: document.querySelector(trigger) || element,
                 start: 'top 80%'
             }
         });
-    }
+    });
 
-    // Animation des projets a la une
-    const projectCards = document.querySelectorAll('.project-card');
-    if (projectCards.length > 0 && !prefersReducedMotion) {
-        gsap.from(projectCards, {
-            opacity: 0,
-            scale: 0.9,
-            stagger: 0.2,
-            duration: 0.8,
-            ease: 'power3.out',
+    // Images avec imageReveal
+    document.querySelectorAll('[data-animate="image-reveal"]').forEach(element => {
+        imageReveal(element, {
             scrollTrigger: {
-                trigger: '.featured-projects',
-                start: 'top 80%'
+                trigger: element,
+                start: 'top 85%'
             }
         });
-    }
+    });
+
+    // Elements avec parallax
+    parallax();
+
+    // Boutons magnetiques
+    magneticButton();
+
+    // Compteurs
+    counterUp();
+
+    // Marquees
+    horizontalMarquee();
 
     // ========================================
-    // Animations de la page À propos
-    //========================================
-
-    // Animation du titre À propos
-    const aboutTitle = document.querySelector('.about-hero__title');
-    if (aboutTitle && !prefersReducedMotion) {
-        const splitTitle = new SplitType(aboutTitle, { types: 'chars' });
-
-        gsap.from(splitTitle.chars, {
-            opacity: 0,
-            y: 50,
-            stagger: 0.05,
-            duration: 0.8,
-            ease: 'power3.out'
-        });
-    }
-
-    // Revelation mot par mot du texte de presentation au scroll
-    const aboutText = document.getElementById('about-text');
-    if (aboutText && !prefersReducedMotion) {
-        const words = aboutText.textContent.split(' ');
-        aboutText.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(' ');
-
-        const wordElements = aboutText.querySelectorAll('.word');
-
-        gsap.from(wordElements, {
-            opacity: 0,
-            stagger: 0.02,
-            duration: 0.5,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: '.about-presentation',
-                start: 'top 70%',
-                onEnter: () => {
-                    wordElements.forEach(word => word.classList.add('visible'));
-                }
-            }
-        });
-    }
-
-    // Parallaxe legere du portrait
-    const portrait = document.querySelector('.about-presentation__portrait');
-    if (portrait && !prefersReducedMotion) {
-        gsap.to(portrait, {
-            yPercent: 10,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.about-presentation',
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true
-            }
-        });
-    }
-
-    // Animation des items de competences en cascade
-    const skillLists = document.querySelectorAll('.skill-card__list');
-    if (skillLists.length > 0 && !prefersReducedMotion) {
-        skillLists.forEach(list => {
-            const items = list.querySelectorAll('li');
-            gsap.to(items, {
-                opacity: 1,
-                x: 0,
-                stagger: 0.1,
-                duration: 0.5,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: list,
-                    start: 'top 80%',
-                    onEnter: () => {
-                        items.forEach(item => item.classList.add('visible'));
-                    }
-                }
-            });
-        });
-    }
-
-    // Timeline : la ligne se dessine au scroll, les items apparaissent
-    const timelineLineProgress = document.querySelector('.about-timeline__line-progress');
-    const timelineItems = document.querySelectorAll('.timeline-item');
-
-    if (timelineLineProgress && timelineItems.length > 0 && !prefersReducedMotion) {
-        gsap.to(timelineLineProgress, {
-            height: '100%',
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.about-timeline',
-                start: 'top center',
-                end: 'bottom center',
-                scrub: true
-            }
-        });
-
-        timelineItems.forEach((item, index) => {
-            gsap.to(item, {
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: item,
-                    start: 'top 85%',
-                    onEnter: () => {
-                        item.classList.add('visible');
-                    }
-                }
-            });
-        });
-    }
-
+    // Refresh au resize
     // ========================================
-    // Animations de la page Services
-    //========================================
-
-    // Animation du titre Services
-    const servicesTitle = document.querySelector('.services-hero__title');
-    if (servicesTitle && !prefersReducedMotion) {
-        const splitTitle = new SplitType(servicesTitle, { types: 'chars' });
-
-        gsap.from(splitTitle.chars, {
-            opacity: 0,
-            y: 50,
-            stagger: 0.05,
-            duration: 0.8,
-            ease: 'power3.out'
-        });
-    }
-
-    // Animation de la ligne de progression du process
-    const processLineProgress = document.querySelector('.process-steps__line-progress');
-    if (processLineProgress && !prefersReducedMotion) {
-        gsap.to(processLineProgress, {
-            height: '100%',
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.process-steps',
-                start: 'top center',
-                end: 'bottom center',
-                scrub: true
-            }
-        });
-    }
-
-    // ========================================
-    // Animations de la page Portfolio
-    //========================================
-
-    // Animation du titre Portfolio
-    const portfolioTitle = document.querySelector('.portfolio-hero__title');
-    if (portfolioTitle && !prefersReducedMotion) {
-        const splitTitle = new SplitType(portfolioTitle, { types: 'chars' });
-
-        gsap.from(splitTitle.chars, {
-            opacity: 0,
-            y: 50,
-            stagger: 0.05,
-            duration: 0.8,
-            ease: 'power3.out'
-        });
-    }
-
-    // Animation de la lightbox
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox && !prefersReducedMotion) {
-        const lightboxContent = lightbox.querySelector('.lightbox__content');
-
-        // Animation d'ouverture
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.attributeName === 'class' && lightbox.classList.contains('lightbox--active')) {
-                    gsap.fromTo(lightboxContent,
-                        { scale: 0.8, opacity: 0 },
-                        { scale: 1, opacity: 1, duration: 0.4, ease: 'power3.out' }
-                    );
-                }
-            });
-        });
-
-        observer.observe(lightbox, { attributes: true });
-    }
-
-    // ========================================
-    // Animations de la page Contact
-    //========================================
-
-    const contactTitle = document.querySelector('.contact-hero__title');
-    const contactSubtitle = document.querySelector('.contact-hero__subtitle');
-    
-    if (contactTitle && !prefersReducedMotion) {
-        const splitTitle = new SplitType(contactTitle, { types: 'chars' });
-
-        gsap.from(splitTitle.chars, {
-            opacity: 0,
-            y: 50,
-            stagger: 0.05,
-            duration: 0.8,
-            ease: 'power3.out'
-        });
-    }
-
-    if (contactSubtitle && !prefersReducedMotion) {
-        gsap.from(contactSubtitle, {
-            opacity: 0,
-            y: 30,
-            duration: 0.6,
-            delay: 0.4,
-            ease: 'power3.out'
-        });
-    }
-
-    // Animation des infos de contact
-    const contactInfo = document.querySelector('.contact-info');
-    if (contactInfo && !prefersReducedMotion) {
-        const contactItems = contactInfo.querySelectorAll('.contact-info__item');
-        
-        gsap.from(contactItems, {
-            opacity: 0,
-            x: -50,
-            stagger: 0.15,
-            duration: 0.6,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.contact-layout',
-                start: 'top 70%'
-            }
-        });
-    }
-
-    // Animation du formulaire
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm && !prefersReducedMotion) {
-        const formFields = contactForm.querySelectorAll('.contact-form__field');
-        
-        gsap.from(formFields, {
-            opacity: 0,
-            y: 30,
-            stagger: 0.1,
-            duration: 0.5,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.contact-layout',
-                start: 'top 70%'
-            }
-        });
-    }
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 250);
+    });
 });
 
-// Ajouter l'animation d'ouverture depuis la miniature pour la lightbox
+// Animation lightbox d'ouverture depuis miniature
 if (typeof gsap !== 'undefined' && typeof Flip !== 'undefined') {
-    // Cette fonction sera appelee depuis main.js quand on ouvre la lightbox
     window.animateLightboxOpen = function(clickedElement) {
         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             const lightbox = document.getElementById('lightbox');
             const lightboxContent = lightbox.querySelector('.lightbox__content');
 
-            // Animation depuis la position de l'element clique
             const rect = clickedElement.getBoundingClientRect();
             const lightboxRect = lightbox.getBoundingClientRect();
 
