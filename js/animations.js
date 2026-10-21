@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Revelation de la page a l'arrivee (apres transition)
-    ========================================
+    // ========================================
     const pageTransition = document.querySelector('.page-transition');
 
     if (pageTransition && !prefersReducedMotion) {

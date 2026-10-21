@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // Smooth scroll Lenis synchronise avec GSAP ScrollTrigger
-    ========================================
+    // ========================================
     if (!prefersReducedMotion) {
         const lenis = new Lenis({
             duration: 1.2,
