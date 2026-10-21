@@ -344,12 +344,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Elements avec fadeUp
     document.querySelectorAll('[data-animate="fade-up"]').forEach(element => {
         const stagger = parseFloat(element.getAttribute('data-stagger')) || 0.15;
-        const trigger = element.getAttribute('data-trigger') || element;
+        const trigger = element.getAttribute('data-trigger');
         
         fadeUp(element, {
             stagger,
             scrollTrigger: {
-                trigger: document.querySelector(trigger) || element,
+                trigger: trigger ? document.querySelector(trigger) : element,
                 start: 'top 80%'
             }
         });
