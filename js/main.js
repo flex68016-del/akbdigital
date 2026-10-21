@@ -407,6 +407,14 @@ document.addEventListener('DOMContentLoaded', () => {
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
 
+        // Animation d'ouverture depuis la miniature
+        if (window.animateLightboxOpen) {
+            const clickedElement = document.querySelector(`.portfolio-item[data-id="${item.id}"]`);
+            if (clickedElement) {
+                window.animateLightboxOpen(clickedElement);
+            }
+        }
+
         // Sauvegarder l'élément focus
         lightbox.dataset.focusReturn = document.activeElement?.outerHTML || '';
     }

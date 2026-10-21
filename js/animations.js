@@ -408,3 +408,38 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(lightbox, { attributes: true });
     }
 });
+
+// Ajouter l'animation d'ouverture depuis la miniature pour la lightbox
+if (typeof gsap !== 'undefined' && typeof Flip !== 'undefined') {
+    // Cette fonction sera appelée depuis main.js quand on ouvre la lightbox
+    window.animateLightboxOpen = function(clickedElement) {
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = lightbox.querySelector('.lightbox__content');
+
+            // Animation depuis la position de l'élément cliqué
+            const rect = clickedElement.getBoundingClientRect();
+            const lightboxRect = lightbox.getBoundingClientRect();
+
+            gsap.set(lightboxContent, {
+                x: rect.left - lightboxRect.left,
+                y: rect.top - lightboxRect.top,
+                width: rect.width,
+                height: rect.height,
+                scale: 1,
+                opacity: 0
+            });
+
+            gsap.to(lightboxContent, {
+                x: 0,
+                y: 0,
+                width: '100%',
+                height: 'auto',
+                scale: 1,
+                opacity: 1,
+                duration: 0.5,
+                ease: 'power3.out'
+            });
+        }
+    };
+}
