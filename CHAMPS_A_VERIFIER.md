@@ -1,115 +1,191 @@
 # Champs [À VÉRIFIER] à compléter avant publication
 
-Ce document liste tous les champs marqués `[À VÉRIFIER]` ou `[À COMPLÉTER]` dans le projet qui doivent être renseignés avant la publication en production.
+Ce document liste tous les éléments manquants ou à compléter dans le projet avant la publication en production.
 
-## 📅 Dates d'expériences (experiences.html)
+---
 
-**Midzo Tech SARL — Mayo App**
-- Date : `[DATE À VÉRIFIER]`
-- Crédits : `[CRÉDITS À VÉRIFIER]`
+## 📊 Résumé rapide
 
-**Le Roi Lapin**
-- Date : `[DATE À VÉRIFIER]`
-- Crédits : `[CRÉDITS À VÉRIFIER]`
+| Élément | État | Quantité |
+|---------|------|----------|
+| Images placeholders | ⚠️ À remplacer | 11 fichiers |
+| Vidéo hero | ❌ Manquante | 1 fichier |
+| Favicon | ❌ Manquants | 3 fichiers |
+| Dates expériences | ⚠️ À vérifier | 6 dates |
+| Crédits | ⚠️ À compléter | Plusieurs |
+| Portfolio data | ⚠️ Placeholders | 12 projets |
+| Liens sociaux | ⚠️ Placeholders | 4 liens |
+| Slogan agence | ⚠️ À valider | 1 slogan |
+| URL domaine | ⚠️ À remplacer | 8 fichiers |
+| Formulaire contact | ⚠️ À configurer | 1 service |
 
-**Démarcation artisanale — 1re édition**
-- Date : `[DATE À VÉRIFIER]`
-- Crédits : `[CRÉDITS À VÉRIFIER]`
+---
 
-**Dunenyo Zan**
-- Date : `[DATE À VÉRIFIER]`
-- Crédits : `[CRÉDITS À VÉRIFIER]`
+## 🖼️ Images à remplacer (11 fichiers)
 
-**Académie Digitale Numérique (ADN)**
-- Date : `[DATE À VÉRIFIER]`
-- Crédits : `[CRÉDITS À VÉRIFIER]`
+**Actuels dans `assets/images/` :**
 
-**Autres projets et événements (extensible via js/experiences-data.js)**
-- Dates : `[DATE À VÉRIFIER]`
-- Crédits : `[CRÉDITS À VÉRIFIER]`
+| Fichier | État | Action |
+|---------|------|--------|
+| `hero-poster.jpg` | ✅ Présent | Vérifier qualité (1200×630) |
+| `portrait-brice.jpg` | ✅ Présent | Vérifier qualité |
+| `hero-placeholder.jpg` | ⚠️ Placeholder | Remplacer par vraie image |
+| `about-placeholder.jpg` | ⚠️ Placeholder | Remplacer par vraie image |
+| `bio-placeholder.jpg` | ⚠️ Placeholder | Remplacer par vraie image |
+| `agency-placeholder.jpg` | ⚠️ Placeholder | Remplacer par vraie image |
+| `portfolio-1-placeholder.jpg` | ⚠️ Placeholder | Remplacer par vraie image |
+| `portfolio-2-placeholder.jpg` | ⚠️ Placeholder | Remplacer par vraie image |
+| `portfolio-3-placeholder.jpg` | ⚠️ Placeholder | Remplacer par vraie image |
+| `portfolio-4-placeholder.jpg` | ⚠️ Placeholder | Remplacer par vraie image |
+| `portfolio-5-placeholder.jpg` | ⚠️ Placeholder | Remplacer par vraie image |
+| `portfolio-6-placeholder.jpg` | ⚠️ Placeholder | Remplacer par vraie image |
 
-## 📝 Descriptions à compléter
+**Dimensions recommandées :**
+- Hero poster : 1200×630 minimum (pour Open Graph)
+- Portfolio thumbnails : 800×600 (4:3) ou 1200×675 (16:9)
+- Portrait : 400×400 minimum (carré)
 
-**experiences.html**
-- Ajouter des descriptions détaillées pour chaque expérience marquée `[À COMPLÉTER]`
+---
 
-**js/experiences-data.js**
-- Ajouter vos projets futurs dans le tableau
+## 🎬 Vidéos à ajouter (1 fichier)
 
-## 🎨 Assets à remplacer
+**Dossier `assets/videos/` :**
 
-### Images
-Tous les fichiers placeholder dans `assets/images/` doivent être remplacés par vos vraies images :
-- `hero-placeholder.jpg` → Image hero
-- `hero-poster.jpg` → Poster vidéo hero (1200×630 minimum pour OG)
-- `about-placeholder.jpg` → Image À propos
-- `bio-placeholder.jpg` → Image bio
-- `agency-placeholder.jpg` → Image agence
-- `portrait-brice.jpg` → Photo de profil
-- `portfolio-1-placeholder.jpg` à `portfolio-6-placeholder.jpg` → Images portfolio
+| Fichier | État | Spécifications |
+|---------|------|----------------|
+| `hero-showreel.mp4` | ❌ Manquant | Boucle, muette, 10-30s, 1920×1080, WebM ou MP4 H.264 |
 
-### Vidéos
-- `assets/videos/hero-showreel.mp4` → Vidéo showreel du hero (boucle, muette)
+---
 
-### Favicon
-- `assets/icons/favicon-32x32.png` → Favicon 32×32
-- `assets/icons/favicon-16x16.png` → Favicon 16×16
-- `assets/icons/apple-touch-icon.png` → Icon Apple Touch (180×180)
+## 🔣 Favicon à créer (3 fichiers)
 
-## 🔗 Liens réseaux sociaux
+**Dossier `assets/icons/` :**
 
-Dans le footer de chaque page, remplacer les liens placeholder :
-- Instagram : `#` → Votre lien Instagram
-- Facebook : `#` → Votre lien Facebook
-- YouTube : `#` → Votre lien YouTube
-- TikTok : `#` → Votre lien TikTok
+| Fichier | État | Dimensions |
+|---------|------|-----------|
+| `favicon-32x32.png` | ❌ Manquant | 32×32 |
+| `favicon-16x16.png` | ❌ Manquant | 16×16 |
+| `apple-touch-icon.png` | ❌ Manquant | 180×180 |
 
-## 📢 Slogan agence
+**Outil recommandé :** https://realfavicongenerator.net/
 
-**akb-communication.html**
-- Ligne du slogan : `[SLOGAN À VALIDER]` - Actuellement "Votre image, notre vision."
-- Confirmez ou changez ce slogan
+---
 
-## 🌐 URL de domaine
+## 📅 Dates d'expériences (6 dates)
 
-Dans les métadonnées SEO de chaque page, remplacer :
-- `https://akbdigital.com/` → Votre nom de domaine réel (ex: `https://alykoffibrice.com/`)
+**Dans `experiences.html` et `js/experiences-data.js` :**
 
-Fichiers concernés :
-- `index.html`
-- `a-propos.html`
-- `services.html`
-- `portfolio.html`
-- `experiences.html`
-- `akb-communication.html`
-- `contact.html`
-- `sitemap.xml`
-- `robots.txt`
+| Expérience | Date actuelle | Action |
+|------------|--------------|--------|
+| Midzo Tech / Mayo App | `[DATE À VÉRIFIER]` | Remplacer par vraie date |
+| Le Roi Lapin | `[DATE À VÉRIFIER]` | Remplacer par vraie date |
+| Démarcation artisanale | `[DATE À VÉRIFIER]` | Remplacer par vraie date |
+| Dunenyo Zan | `[DATE À VÉRIFIER]` | Remplacer par vraie date |
+| ADN | `[DATE À VÉRIFIER]` | Remplacer par vraie date |
+| AKB Communication | `[DATE À VÉRIFIER]` | Remplacer par vraie date |
 
-## 📧 Configuration formulaire de contact
+---
 
-**contact.html**
-- Choisir entre Formspree ou EmailJS
-- Remplacer les identifiants placeholder par vos vrais identifiants
+## 📝 Crédits et descriptions
 
-## 📊 Données portfolio
+**À compléter dans `experiences.html` :**
+- `[CRÉDITS À VÉRIFIER]` pour chaque expérience
+- Descriptions détaillées pour les projets marqués `[À COMPLÉTER]`
 
-**js/portfolio-data.js**
+**Dans `js/portfolio-data.js` :**
 - Remplacer les 12 projets placeholders par vos vraies réalisations
 - Chaque projet doit avoir : id, titre, catégories, type, miniature, src, client
 
+---
+
+## 🔗 Liens réseaux sociaux (4 liens)
+
+**Dans le footer de chaque page :**
+
+| Réseau | Lien actuel | Action |
+|--------|-------------|--------|
+| Instagram | `#` | Remplacer par votre lien |
+| Facebook | `#` | Remplacer par votre lien |
+| YouTube | `#` | Remplacer par votre lien |
+| TikTok | `#` | Remplacer par votre lien |
+
+---
+
+## 📢 Slogan agence
+
+**Dans `akb-communication.html` :**
+- `[SLOGAN À VALIDER]` - Actuellement "Votre image, notre vision."
+- Action : Confirmer ou changer ce slogan
+
+---
+
+## 🌐 URL de domaine (8 fichiers)
+
+**Dans les métadonnées SEO de chaque page :**
+
+| Fichier | URL actuelle | Action |
+|---------|--------------|--------|
+| index.html | `https://akbdigital.com/` | Remplacer par vrai domaine |
+| a-propos.html | `https://akbdigital.com/a-propos.html` | Remplacer par vrai domaine |
+| services.html | `https://akbdigital.com/services.html` | Remplacer par vrai domaine |
+| portfolio.html | `https://akbdigital.com/portfolio.html` | Remplacer par vrai domaine |
+| experiences.html | `https://akbdigital.com/experiences.html` | Remplacer par vrai domaine |
+| akb-communication.html | `https://akbdigital.com/akb-communication.html` | Remplacer par vrai domaine |
+| contact.html | `https://akbdigital.com/contact.html` | Remplacer par vrai domaine |
+| sitemap.xml | `https://akbdigital.com/` | Remplacer par vrai domaine |
+
+---
+
+## 📧 Configuration formulaire de contact
+
+**Dans `contact.html` :**
+
+Choisir entre :
+
+**Option A : Formspree (plus simple)**
+1. Créez un compte sur https://formspree.io
+2. Créez un nouveau formulaire
+3. Copiez votre Form ID
+4. Dans `contact.html`, remplacez `const FORMSPREE_ID = 'VOTRE_FORM_ID';`
+5. Décommentez le bloc Formspree
+
+**Option B : EmailJS (plus de personnalisation)**
+1. Créez un compte sur https://www.emailjs.com
+2. Créez un Email Service (ex: Gmail)
+3. Créez un Email Template avec les variables : `{{from_name}}`, `{{from_email}}`, `{{subject}}`, `{{message}}`
+4. Copiez vos identifiants
+5. Dans `contact.html`, remplacez les identifiants placeholder
+6. Ajoutez le script EmailJS dans le `<head>` de toutes les pages
+7. Décommentez le bloc EmailJS
+
+---
+
 ## ✅ Checklist avant publication
 
-- [ ] Toutes les dates d'expériences remplies
-- [ ] Tous les crédits ajoutés
-- [ ] Toutes les images placeholders remplacées
+- [ ] Toutes les 11 images placeholders remplacées
 - [ ] Vidéo hero-showreel.mp4 ajoutée
-- [ ] Favicon et Apple Touch Icon créés
-- [ ] Liens réseaux sociaux remplacés
+- [ ] 3 fichiers favicon créés
+- [ ] Toutes les 6 dates d'expériences remplies
+- [ ] Tous les crédits ajoutés
+- [ ] Descriptions complétées
+- [ ] 12 projets portfolio remplacés par vrais projets
+- [ ] 4 liens réseaux sociaux remplacés
 - [ ] Slogan agence validé
-- [ ] URL de domaine remplacée dans tous les fichiers
+- [ ] URL de domaine remplacée dans les 8 fichiers
 - [ ] Formulaire de contact configuré (Formspree ou EmailJS)
-- [ ] Portfolio data remplacé par vos vrais projets
-- [ ] Vérification du site sur mobile et desktop
+- [ ] Vérification du site sur mobile (360, 768 px)
+- [ ] Vérification du site sur desktop (1024, 1280, 1440, 1920 px)
 - [ ] Test du formulaire de contact
 - [ ] Test de tous les liens internes
+- [ ] Validation CSS : `node scripts/check-css.js`
+- [ ] Hard refresh sur navigateur pour vérifier cache
+
+---
+
+## 📚 Notes supplémentaires
+
+**Email actuel :** koffibricealy@gmail.com (à vérifier si correct)
+
+**GitHub :** https://github.com/flex68016-del/akbdigital.git (à vérifier si correct)
+
+**Vercel :** Site déployé sur https://akbdigital.vercel.app/ (à remplacer par vrai domaine)

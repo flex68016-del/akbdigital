@@ -9,7 +9,7 @@ ALY Koffi Brice, également connu sous le nom de AKB ou Mr Brice, est un créati
 ## 🌐 Coordonnées
 
 - **Téléphone / WhatsApp** : +228 93 39 53 77
-- **Email** : alykoffibrice00@gmail.com
+- **Email** : koffibricealy@gmail.com
 - **Localisation** : Lomé, Togo
 - **GitHub** : https://github.com/flex68016-del/akbdigital.git
 
@@ -70,53 +70,123 @@ python -m http.server 8000
 npx serve
 ```
 
-## 📝 Personnalisation avant publication
+## � Éléments manquants à compléter avant publication
+
+### 🖼️ Images (11 fichiers JPG à remplacer)
+
+**Actuels dans `assets/images/` :**
+- ✅ `hero-poster.jpg` - Poster vidéo hero (présent)
+- ✅ `portrait-brice.jpg` - Photo de profil (présent)
+- ⚠️ `hero-placeholder.jpg` - Image hero (placeholder)
+- ⚠️ `about-placeholder.jpg` - Image À propos (placeholder)
+- ⚠️ `bio-placeholder.jpg` - Image bio (placeholder)
+- ⚠️ `agency-placeholder.jpg` - Image agence (placeholder)
+- ⚠️ `portfolio-1-placeholder.jpg` à `portfolio-6-placeholder.jpg` - 6 images portfolio (placeholders)
+
+**Dimensions recommandées :**
+- Hero poster : 1200×630 minimum (pour Open Graph)
+- Portfolio thumbnails : 800×600 (4:3) ou 1200×675 (16:9)
+- Portrait : 400×400 minimum (carré)
+
+### 🎬 Vidéos (1 fichier à ajouter)
+
+**Dossier `assets/videos/` :**
+- ❌ `hero-showreel.mp4` - Vidéo showreel du hero (boucle, muette, format WebM ou MP4)
+
+**Recommandations :**
+- Durée : 10-30 secondes (boucle)
+- Format : WebM (préféré) ou MP4 H.264
+- Résolution : 1920×1080
+- Audio : Muète (le site a sa propre musique)
+
+### 🔣 Favicon (3 fichiers à créer)
+
+**Dossier `assets/icons/` :**
+- ❌ `favicon-32x32.png` - Favicon 32×32
+- ❌ `favicon-16x16.png` - Favicon 16×16
+- ❌ `apple-touch-icon.png` - Icon Apple Touch (180×180)
+
+**Outils recommandés :**
+- https://realfavicongenerator.net/ (génère tous les formats)
+- ou utilisez le logo AKB comme base
+
+### 📅 Dates d'expériences (6 dates à vérifier)
+
+**Dans `experiences.html` et `js/experiences-data.js` :**
+- Midzo Tech / Mayo App : `[DATE À VÉRIFIER]`
+- Le Roi Lapin : `[DATE À VÉRIFIER]`
+- Démarcation artisanale : `[DATE À VÉRIFIER]`
+- Dunenyo Zan : `[DATE À VÉRIFIER]`
+- ADN : `[DATE À VÉRIFIER]`
+- AKB Communication : `[DATE À VÉRIFIER]`
+
+### 📝 Crédits et descriptions
+
+**À compléter dans `experiences.html` :**
+- `[CRÉDITS À VÉRIFIER]` pour chaque expérience
+- Descriptions détaillées pour les projets marqués `[À COMPLÉTER]`
+
+**Dans `js/portfolio-data.js` :**
+- Remplacer les 12 projets placeholders par vos vraies réalisations
+- Chaque projet doit avoir : id, titre, catégories, type, miniature, src, client
+
+### 🔗 Liens réseaux sociaux (4 liens à remplacer)
+
+**Dans le footer de chaque page :**
+- Instagram : `#` → Votre lien Instagram
+- Facebook : `#` → Votre lien Facebook
+- YouTube : `#` → Votre lien YouTube
+- TikTok : `#` → Votre lien TikTok
+
+### 📢 Slogan agence
+
+**Dans `akb-communication.html` :**
+- `[SLOGAN À VALIDER]` - Actuellement "Votre image, notre vision."
+- Confirmez ou changez ce slogan
+
+### 🌐 URL de domaine
+
+**Dans les métadonnées SEO de chaque page (8 fichiers) :**
+- `https://akbdigital.com/` → Votre nom de domaine réel
+
+**Fichiers concernés :**
+- index.html, a-propos.html, services.html, portfolio.html
+- experiences.html, akb-communication.html, contact.html
+- sitemap.xml, robots.txt
+
+### 📧 Configuration formulaire de contact
+
+**Dans `contact.html` :**
+- Choisir entre Formspree ou EmailJS
+- Remplacer les identifiants placeholder par vos vrais identifiants
+- Voir section détaillée ci-dessous
+
+## �📝 Personnalisation avant publication
 
 ### 1. Remplacer les médias
 
-Les fichiers placeholder doivent être remplacés par vos vraies images et vidéos :
+Les fichiers placeholder doivent être remplacés par vos vraies images et vidéos.
 
-**Images à ajouter dans `assets/images/` :**
-- `hero-poster.jpg` - Image de fond du hero (1200×630 minimum)
+**Images à remplacer dans `assets/images/` :**
+- `hero-placeholder.jpg` → Image hero de fond
+- `about-placeholder.jpg` → Image section À propos
+- `bio-placeholder.jpg` → Image bio
+- `agency-placeholder.jpg` → Image agence AKB Communication
+- `portfolio-1-placeholder.jpg` à `portfolio-6-placeholder.jpg` → 6 images portfolio
+
+**Images présentes (à vérifier) :**
+- `hero-poster.jpg` - Poster vidéo hero (1200×630 minimum pour OG)
 - `portrait-brice.jpg` - Photo de profil
-- Images portfolio - Remplacer les placeholders `portfolio-X-placeholder.jpg`
+
+**Vidéo à ajouter dans `assets/videos/` :**
+- `hero-showreel.mp4` - Vidéo de showreel du hero (boucle, muette, 10-30s)
+
+**Favicon à créer dans `assets/icons/` :**
 - `favicon-32x32.png` - Favicon 32×32
 - `favicon-16x16.png` - Favicon 16×16
 - `apple-touch-icon.png` - Icon Apple Touch (180×180)
 
-**Vidéo à ajouter dans `assets/videos/` :**
-- `hero-showreel.mp4` - Vidéo de showreel du hero (boucle, muette)
-
-### 2. Configurer le formulaire de contact
-
-Le formulaire dans `contact.html` utilise soit Formspree soit EmailJS. Configurez l'un des deux :
-
-**Option A : Formspree (plus simple)**
-1. Créez un compte sur https://formspree.io
-2. Créez un nouveau formulaire
-3. Copiez votre Form ID
-4. Dans `contact.html` ligne ~210, remplacez :
-   ```javascript
-   const FORMSPREE_ID = 'VOTRE_FORM_ID';
-   ```
-5. Décommentez le bloc Formspree (lignes ~230-247)
-
-**Option B : EmailJS (plus de personnalisation)**
-1. Créez un compte sur https://www.emailjs.com
-2. Créez un Email Service (ex: Gmail)
-3. Créez un Email Template avec les variables : `{{from_name}}`, `{{from_email}}`, `{{subject}}`, `{{message}}`
-4. Copiez vos identifiants
-5. Dans `contact.html` lignes ~214-216, remplacez :
-   ```javascript
-   const EMAILJS_SERVICE_ID = 'VOTRE_SERVICE_ID';
-   const EMAILJS_TEMPLATE_ID = 'VOTRE_TEMPLATE_ID';
-   const EMAILJS_PUBLIC_KEY = 'VOTRE_PUBLIC_KEY';
-   ```
-6. Ajoutez le script EmailJS dans le `<head>` de toutes les pages :
-   ```html
-   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-   ```
-7. Décommentez le bloc EmailJS (lignes ~249-262)
+**Outil recommandé :** https://realfavicongenerator.net/
 
 ### 3. Ajouter des réalisations au portfolio
 
@@ -150,25 +220,9 @@ Dans le footer de chaque page, remplacez les liens placeholder par vos vrais com
 - YouTube
 - TikTok
 
-### 6. Champs [À VÉRIFIER] à compléter
+### 6. Configurer le formulaire de contact
 
-**Dates d'expériences (`experiences.html`) :**
-- Midzo Tech / Mayo App : [DATE À VÉRIFIER]
-- Le Roi Lapin : [DATE À VÉRIFIER]
-- Démarcation artisanale : [DATE À VÉRIFIER]
-- Dunenyo Zan : [DATE À VÉRIFIER]
-- ADN : [DATE À VÉRIFIER]
-- AKB Communication : [DATE À VÉRIFIER]
-
-**Crédits et mentions :**
-- [CRÉDITS À VÉRIFIER] dans les projets portfolio
-- [CRÉDITS À VÉRIFIER] dans les expériences
-
-**Slogan agence (`akb-communication.html`) :**
-- [SLOGAN À VALIDER] : Votre image, notre vision
-
-**URL GitHub :**
-- Vérifiez que `https://github.com/flex68016-del/akbdigital.git` est correct
+Le formulaire dans `contact.html` utilise Formspree ou EmailJS. Configurez l'un des deux (voir détails dans `CHAMPS_A_VERIFIER.md`).
 
 ## 🌐 Déploiement
 
@@ -214,12 +268,26 @@ Le site est optimisé pour :
 - **Accessibilité** : Navigation clavier, focus visible, WCAG AA, skip-link
 - **Mots-clés ciblés** : vidéaste Lomé, photographe Lomé, monteur vidéo Togo, community manager Lomé, agence de communication Lomé
 
+## ✅ Validation CSS
+
+Le projet inclut un script de validation pour vérifier l'équilibre des accolades CSS :
+
+```bash
+node scripts/check-css.js
+```
+
+Ce script échouera si les accolades sont déséquilibrées, évitant les erreurs CSS en production.
+
 ## 📝 License
 
-Ce projet est la propriété de ALY KKoffi Brice. Tous droits réservés.
+Ce projet est la propriété de ALY Koffi Brice. Tous droits réservés.
 
 ## 📧 Contact
 
 Pour toute question ou collaboration, contactez :
-- Email : alykoffibrice00@gmail.com
+- Email : koffibricealy@gmail.com
 - WhatsApp : +228 93 39 53 77
+
+## 📚 Documentation supplémentaire
+
+Pour une liste détaillée de tous les champs à compléter, voir `CHAMPS_A_VERIFIER.md`.
