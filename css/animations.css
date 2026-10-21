@@ -1677,10 +1677,16 @@
 
     .experience-card__gallery {
         grid-template-columns: 1fr;
+        overflow-x: auto;
+        white-space: nowrap;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
     }
-
+    
     .experience-card__gallery-img {
+        width: 200px;
         height: 150px;
+        flex-shrink: 0;
     }
 }
 
@@ -1930,17 +1936,56 @@
 }
 
 @media (max-width: 768px) {
+    .agency-hero__title {
+        font-size: clamp(2.2rem, 11vw, var(--text-6xl));
+    }
+    
+    .agency-hero__subtitle {
+        font-size: var(--text-xl);
+    }
+    
+    .agency-services-3d__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+    
+    .agency-service-3d-card {
+        transform-style: flat;
+    }
+    
+    .agency-service-3d-card:hover {
+        transform: none;
+    }
+    
     .agency-vision__values {
         grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+    
+    .agency-vision__icon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .agency-target__list {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .agency-target__item {
+        width: 100%;
+        max-width: 22rem;
     }
 
     .agency-complementarity__diagram {
         flex-direction: column;
+        gap: var(--space-8);
     }
 
     .agency-complementarity__circle {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
+        font-size: var(--text-sm);
     }
 
     .agency-complementarity__result {
@@ -2158,11 +2203,62 @@
 }
 
 @media (max-width: 768px) {
+    .contact-hero__title {
+        font-size: clamp(2.2rem, 11vw, var(--text-6xl));
+    }
+    
+    .contact-hero__subtitle {
+        font-size: var(--text-xl);
+    }
+    
     .contact-layout__grid {
         grid-template-columns: 1fr;
+        gap: var(--space-8);
     }
-
+    
+    .contact-info,
+    .contact-form {
+        padding: var(--space-6);
+    }
+    
+    .contact-info__whatsapp {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .contact-form__input,
+    .contact-form__textarea,
+    .contact-form__select {
+        font-size: 16px;
+    }
+    
     .contact-marquee__text {
-        font-size: var(--text-3xl);
+        font-size: clamp(1.5rem, 6vw, var(--text-5xl));
+    }
+}
+
+/* ========================================
+   Page 404
+   ======================================== */
+.error-code {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(4rem, 15vw, 8rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #1E6BFF 0%, #4DB8FF 60%, #A8DEFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--sky-light);
+    line-height: 1;
+    margin-bottom: var(--space-4);
+}
+
+@media (max-width: 768px) {
+    .error-code {
+        font-size: clamp(3rem, 12vw, 6rem);
+    }
+    
+    .error-message {
+        font-size: var(--text-base);
     }
 }

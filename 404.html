@@ -11,127 +11,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Inter', sans-serif;
-            background: #050B1A;
-            color: #F4F8FF;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .container {
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .error-code {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(6rem, 15vw, 12rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, #1E6BFF 0%, #4DB8FF 60%, #A8DEFF 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: #A8DEFF;
-            line-height: 1;
-            margin-bottom: 1rem;
-        }
-        
-        .error-message {
-            font-size: clamp(1.25rem, 2vw, 1.5rem);
-            color: #8FA3BF;
-            margin-bottom: 2rem;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, #1E6BFF 0%, #4DB8FF 60%, #A8DEFF 100%);
-            color: #050B1A;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(77, 184, 255, 0.3);
-        }
-        
-        .viewfinder {
-            position: fixed;
-            width: 100px;
-            height: 100px;
-            border: 2px solid rgba(77, 184, 255, 0.3);
-            pointer-events: none;
-        }
-        
-        .viewfinder-tl {
-            top: 20px;
-            left: 20px;
-            border-right: none;
-            border-bottom: none;
-        }
-        
-        .viewfinder-tr {
-            top: 20px;
-            right: 20px;
-            border-left: none;
-            border-bottom: none;
-        }
-        
-        .viewfinder-bl {
-            bottom: 20px;
-            left: 20px;
-            border-right: none;
-            border-top: none;
-        }
-        
-        .viewfinder-br {
-            bottom: 20px;
-            right: 20px;
-            border-left: none;
-            border-top: none;
-        }
-        
-        .rec-dot {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 12px;
-            height: 12px;
-            background: #FF3B3B;
-            border-radius: 50%;
-            animation: blink 1s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0; }
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-            .rec-dot {
-                animation: none;
-            }
-            
-            .cta-button:hover {
-                transform: none;
-                box-shadow: none;
-            }
+            padding-top: calc(var(--header-h, 80px) + 2rem + env(safe-area-inset-top));
         }
     </style>
 </head>
@@ -142,10 +27,10 @@
     <div class="viewfinder viewfinder-br"></div>
     <div class="rec-dot"></div>
     
-    <div class="container">
+    <main class="container">
         <div class="error-code">404</div>
         <p class="error-message">Cette page n'existe pas ou a été déplacée.</p>
-        <a href="index.html" class="cta-button">Retour à l'accueil</a>
-    </div>
+        <a href="index.html" class="btn btn--primary">Retour à l'accueil</a>
+    </main>
 </body>
 </html>
