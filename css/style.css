@@ -515,3 +515,9 @@ section {
     font-weight: 700;
     color: var(--text);
 }
+
+@media (max-width: 768px) {
+    .section-title__text {
+        font-size: clamp(1.75rem, 7vw, var(--text-5xl));
+    }
+}
