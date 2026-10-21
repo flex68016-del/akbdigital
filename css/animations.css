@@ -2119,18 +2119,6 @@
     color: var(--sky);
 }
 
-@media (max-width: 768px) {
-    .contact-hero__title {
-        font-size: var(--title-xl);
-        letter-spacing: -0.02em;
-        text-wrap: balance;
-        margin-bottom: var(--space-4);
-    }
-
-    .contact-hero__subtitle {
-        font-size: var(--text-xl);
-    }
-
 .contact-layout {
     padding: var(--space-32) 0;
 }
@@ -2326,10 +2314,42 @@
 }
 
 @media (max-width: 768px) {
+    .contact-hero__title {
+        font-size: var(--title-xl);
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+        margin-bottom: var(--space-4);
+    }
+
+    .contact-hero__subtitle {
+        font-size: var(--text-xl);
+    }
+
     .contact-layout__grid {
         grid-template-columns: 1fr;
         gap: var(--space-8);
     }
+
+    .contact-info,
+    .contact-form {
+        padding: var(--space-6);
+    }
+
+    .contact-info__whatsapp {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .contact-form__input,
+    .contact-form__textarea,
+    .contact-form__select {
+        font-size: 16px;
+    }
+
+    .contact-marquee__text {
+        font-size: clamp(1.5rem, 6vw, var(--text-5xl));
+    }
+}
     
     .contact-info,
     .contact-form {
