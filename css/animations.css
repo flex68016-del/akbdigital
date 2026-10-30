@@ -677,6 +677,7 @@
     display: block;
     font-size: var(--text-base);
     opacity: 1;
+    transform: none;
 }
 
 @media (max-width: 768px) {
