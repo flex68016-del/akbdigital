@@ -140,23 +140,17 @@ Ce document liste tous les éléments manquants ou à compléter dans le projet 
 
 **Dans `contact.html` :**
 
-Choisir entre :
+Le formulaire utilise déjà **Web3Form** avec l'access key configurée.
 
-**Option A : Formspree (plus simple)**
-1. Créez un compte sur https://formspree.io
-2. Créez un nouveau formulaire
-3. Copiez votre Form ID
-4. Dans `contact.html`, remplacez `const FORMSPREE_ID = 'VOTRE_FORM_ID';`
-5. Décommentez le bloc Formspree
+**Action requise :**
+- Vérifier que vous recevez les emails sur : koffibricealy@gmail.com
+- Si l'access key doit être changée, la modifier dans `contact.html` (ligne ~271)
 
-**Option B : EmailJS (plus de personnalisation)**
-1. Créez un compte sur https://www.emailjs.com
-2. Créez un Email Service (ex: Gmail)
-3. Créez un Email Template avec les variables : `{{from_name}}`, `{{from_email}}`, `{{subject}}`, `{{message}}`
-4. Copiez vos identifiants
-5. Dans `contact.html`, remplacez les identifiants placeholder
-6. Ajoutez le script EmailJS dans le `<head>` de toutes les pages
-7. Décommentez le bloc EmailJS
+**Comment fonctionne Web3Form :**
+- Gratuit et simple à utiliser
+- Les messages arrivent directement sur votre email
+- Pas besoin de configuration supplémentaire
+- Anti-spam intégré
 
 ---
 
