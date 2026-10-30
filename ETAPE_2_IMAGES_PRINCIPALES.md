@@ -4,7 +4,7 @@ Une fois les informations de base reçues, merci de me fournir les URLs de ces i
 
 ---
 
-## 🖼️ Images prioritaires (5 images)
+## 🖼️ Images prioritaires (4 images)
 
 ### 1. Image Hero de fond
 - **Description :** Image de fond pour la page d'accueil (section hero)
@@ -13,26 +13,21 @@ Une fois les informations de base reçues, merci de me fournir les URLs de ces i
 - **Style :** Cinématique, atmosphérique, en lien avec votre métier (vidéo/photo)
 - **URL Cloudinary :** `[LIEN DE L'IMAGE]`
 
-### 2. Image À propos
-- **Description :** Image pour la section "À propos"
-- **Note :** Image déjà fournie (about-portrait.jpg) - à confirmer si OK
-- **URL Cloudinary (si changement) :** `[LIEN DE L'IMAGE]`
-
-### 3. Image Bio
+### 2. Image Bio
 - **Description :** Image pour la section bio
 - **Dimensions recommandées :** 800×600 ou plus
 - **Format :** JPG ou PNG
 - **Style :** Photo professionnelle
 - **URL Cloudinary :** `[LIEN DE L'IMAGE]`
 
-### 4. Image Agence AKB Communication
+### 3. Image Agence AKB Communication
 - **Description :** Image pour la page AKB Communication
 - **Dimensions recommandées :** 1200×800 ou plus
 - **Format :** JPG ou PNG
 - **Style :** Représentant l'agence, équipe ou workspace
 - **URL Cloudinary :** `[LIEN DE L'IMAGE]`
 
-### 5. Poster vidéo hero
+### 4. Poster vidéo hero
 - **Description :** Poster pour les réseaux sociaux (Open Graph) - s'affiche quand on partage le site
 - **Dimensions :** 1200×630 minimum
 - **Note :** Si pas disponible, j'utiliserai l'image hero

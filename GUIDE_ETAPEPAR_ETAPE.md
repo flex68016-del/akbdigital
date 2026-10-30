@@ -9,7 +9,7 @@ Ce guide organise la collecte des données en 5 étapes, de la plus critique à 
 | Étape | Contenu | Priorité | Durée estimée |
 |-------|---------|----------|---------------|
 | 1 | Informations de base (dates, réseaux sociaux, contact) | 🔴 Haute | 10 min |
-| 2 | Images principales (hero, à propos, agence) | 🔴 Haute | 10 min |
+| 2 | Images principales (hero, bio, agence, poster) | 🔴 Haute | 10 min |
 | 3 | Vidéo hero | 🟡 Moyenne | 5 min |
 | 4 | Projets portfolio | 🟡 Moyenne | 20 min |
 | 5 | Finaux et vérification | 🟢 Basse | 10 min |
