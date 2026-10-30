@@ -647,6 +647,7 @@
     transition: border-color var(--duration-normal) var(--ease-out);
     display: flex;
     flex-direction: column;
+    min-height: 250px;
 }
 
 .service-card:hover {
@@ -667,6 +668,8 @@
 .service-card__description {
     color: var(--muted);
     line-height: 1.6;
+    margin-top: var(--space-2);
+    display: block;
 }
 
 @media (max-width: 768px) {
