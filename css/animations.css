@@ -669,7 +669,7 @@
 }
 
 .service-card__description {
-    color: var(--muted);
+    color: var(--text);
     line-height: 1.6;
     margin-top: var(--space-2);
     display: block;
