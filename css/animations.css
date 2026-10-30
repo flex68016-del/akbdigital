@@ -919,12 +919,12 @@
 }
 
 .skill-card__list li {
-    color: var(--muted);
+    color: var(--text);
     margin-bottom: var(--space-2);
     padding-left: var(--space-4);
     position: relative;
-    opacity: 0;
-    transform: translateX(-20px);
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .skill-card__list li::before {
