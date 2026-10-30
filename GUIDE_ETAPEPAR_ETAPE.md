@@ -58,11 +58,17 @@ Favicon personnalisé (optionnel) et descriptions détaillées.
 
 ## ✅ Progression
 
-- ✅ Étape 1 : `[EN ATTENTE]`
-- ⏳ Étape 2 : `[EN ATTENTE]`
-- ⏳ Étape 3 : `[EN ATTENTE]`
-- ⏳ Étape 4 : `[EN ATTENTE]`
-- ⏳ Étape 5 : `[EN ATTENTE]`
+- ✅ Étape 1 : `[PARTIELLEMENT TERMINÉE]`
+  - ✅ Dates d'expériences
+  - ✅ TikTok (seul réseau social)
+  - ✅ Email et WhatsApp
+  - ✅ Adresse (Lomé, Togo)
+  - ❌ Slogan agence (à confirmer : "Votre image, notre vision")
+  - ❌ Nom de domaine (à fournir)
+- ⏳ Étape 2 : `[EN ATTENTE]` - Images principales (5 images)
+- ⏳ Étape 3 : `[EN ATTENTE]` - Vidéo hero
+- ⏳ Étape 4 : `[EN ATTENTE]` - Projets portfolio (jusqu'à 12 projets)
+- ⏳ Étape 5 : `[EN ATTENTE]` - Favicon et vérifications finales
 
 ---
 
